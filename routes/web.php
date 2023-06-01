@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControllers\PagesController;
+use App\Http\Controllers\FrontControllers\ViewsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,7 @@ use App\Http\Controllers\AdminControllers\PagesController;
 
 
 // Guest
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ViewsController::class,'index']);
 
 // Admin
 Route::prefix('admin')->middleware('auth')->group(function () {
