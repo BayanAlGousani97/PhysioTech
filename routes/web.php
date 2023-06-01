@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminControllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+// Guest
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Admin
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::get('/', [PagesController::class, 'home']);
 });
