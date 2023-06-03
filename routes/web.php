@@ -17,11 +17,13 @@ use App\Http\Controllers\FrontControllers\ViewsController;
 */
 
 // Guest
-Route::get('/', [ViewsController::class, 'index']);
+Route::get('/', [ViewsController::class, 'index'])->name('front.index');
 
 // Dashboard
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [PagesController::class, 'home']);
+    Route::get('/header', [PagesController::class, 'header'])->name('header.index');
+    Route::post('/header', [PagesController::class, 'updateHeader'])->name('header.update');
 });
 
 Route::middleware('auth')->group(function () {

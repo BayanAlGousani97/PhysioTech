@@ -43,7 +43,7 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid bg-white sticky-top px-lg-5 py-2">
+    {{-- <div class="container-fluid bg-white sticky-top px-lg-5 py-2">
         <div class="row align-items-center">
             <div class="col-lg-6 text-md-start">
                 <h4 class="text-main">Physio Tech</h4>
@@ -56,11 +56,11 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Navbar End -->
 
     <!-- Header Start -->
-    <nav class="navbar navbar-expand-lg bg-light navbar-light px-3 px-lg-5">
+    {{-- <nav class="navbar navbar-expand-lg bg-light navbar-light px-3 px-lg-5">
         <div class="container-fluid">
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <i class="navbar-toggler-icon"></i>
@@ -89,8 +89,48 @@
             </div>
         </div>
 
-    </nav>
+    </nav> --}}
     <!-- Header End -->
+
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white px-2 py-2 ">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="{{ route('front.index') }}">
+                <h3 class="text-main">Physio Tech</h3>
+                <p class="text-muted small ">Physiotherapy | Home care</p>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link ">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#doctors" class=" nav-link">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class=" nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">arabic</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-primary" type="submit">Book Appointment</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
     @yield('content')
 
@@ -100,7 +140,7 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6">
-                    <h1 class="text-title mb-4"><img class="img-fluid me-2" src="img/hero-1.png" alt=""
+                    <h1 class="text-second mb-4"><img class="img-fluid me-2" src="img/hero-1.png" alt=""
                             style="width: 45px;">PhysioTech</h1>
                     <span>This text is an experimental text and can be replaced with other content describing the
                         business,

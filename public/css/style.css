@@ -28,7 +28,7 @@ h6,
     color: var(--primary);
 }
 
-.text-title{
+.text-second{
     color: var(--secondText);
 }
 /*** Spinner ***/
@@ -94,8 +94,8 @@ h6,
 }
 
 .navbar .navbar-nav .nav-link {
-    /* margin-right: 30px; */
-    /* padding: 25px 0; */
+    margin-right: 30px;
+    padding: 25px 0;
     color: var(--dark);
     font-weight: 500;
     outline: none;
