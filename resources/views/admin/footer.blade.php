@@ -15,16 +15,24 @@
                             <div class="row">
 
                                 <div class="col-lg-12">
-                                    <label class="col-form-label">Title</label>
-                                    <input type="text" class="form-control" name="title_en"
-                                        value="{{ $info['title']['en'] }}" required>
+                                    <label class="col-form-label">Summary</label>
+                                    <textarea type="text" class="form-control" name="summary_en" rows="4" required></textarea>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label class="col-form-label">Slogan</label>
-                                    <input type="text" class="form-control" name="slogan_en"
-                                        value="{{ $info['slogan']['en'] }}" required>
+                                    <label class="col-form-label">
+                                        Address
+                                    </label>
+                                    <input type="text" class="form-control" name="address_en" value=" " required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label class="col-form-label">
+                                        Phone
+                                    </label>
+                                    <input type="text" class="form-control" name="phone_en" value=" " required>
                                 </div>
                             </div>
 
@@ -43,16 +51,23 @@
                             <form>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label class="col-form-label">العنوان التفصيلي</label>
-                                        <input type="text" class="form-control" name="title_ar"
-                                            value="{{ $info['title']['ar'] }}" dir="rtl" required>
+                                        <label class="col-form-label">موجز عن فيزيوتيك</label>
+                                        <textarea type="text" class="form-control" name="summary_ar" rows="4" dir="rtl" required></textarea>
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label class="col-form-label">الشعار</label>
-                                        <input type="text" class="form-control" name="slogan_ar"
-                                            value="{{ $info['slogan']['ar'] }}"dir="rtl" required>
+                                        <label class="col-form-label">العنوان</label>
+                                        <input type="text" class="form-control" name="address_ar"
+                                            value=""dir="rtl" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label class="col-form-label">رقم الهاتف</label>
+                                        <input type="text" class="form-control" name="phone_ar"
+                                            value=""dir="rtl" required>
                                     </div>
                                 </div>
                         </div>
