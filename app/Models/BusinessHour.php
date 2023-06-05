@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Translatable\HasTranslations;
 
 class BusinessHour extends Model
 {
-    use HasFactory, SoftDeletes, HasTranslations;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -23,5 +22,9 @@ class BusinessHour extends Model
         'status',
     ];
 
-    public $translatable = ['day', 'from', 'to'];
+    // TODO : Accessor and mutatuor to days
+    protected $casts = [
+        'from' => 'date:h:i',
+        'to' => 'date:h:i'
+    ];
 }

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\BusinessHour;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,5 +24,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(UsersSeeder::class);
+        $this->call(InfoSeeder::class);
+        $this->call(SectionsSeeder::class);
+        $this->call(BusinessHoursSeeder::class);
     }
 }

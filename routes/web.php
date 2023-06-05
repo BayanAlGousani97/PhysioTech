@@ -27,6 +27,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::get('/footer', [PagesController::class, 'footer'])->name('footer.index');
     Route::post('/footer', [PagesController::class, 'updateFooter'])->name('footer.update');
+
+    Route::get('/contact', [PagesController::class, 'contact'])->name('contact.index');
+    Route::post('/contact', [PagesController::class, 'updateContact'])->name('contact.update');
 });
 
 Route::middleware('auth')->group(function () {

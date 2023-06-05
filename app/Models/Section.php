@@ -25,5 +25,5 @@ class Section extends Model
         'status'
     ];
 
-    public $translatable = ['name', 'slug', 'title', 'image', 'description'];
+    public $translatable = ['name', 'title', 'image', 'description'];
 }

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('business_hours', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('day')->nullable();
-            $table->string('from')->nullable();
-            $table->string('to')->nullable();
+            $table->timestamp('from')->nullable();
+            $table->timestamp('to')->nullable();
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
