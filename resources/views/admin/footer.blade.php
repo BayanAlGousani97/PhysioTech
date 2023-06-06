@@ -82,9 +82,9 @@
                                     <thead>
                                         <tr>
                                             <td>Day</td>
+                                            <td>Close</td>
                                             <td>From</td>
                                             <td>To</td>
-                                            <td>Close</td>
                                         </tr>
                                     </thead>
                                     @foreach ($businessHours as $item)
@@ -121,11 +121,11 @@
                                             </td>
                                             <td>
                                                 <input class="form-control" type="time" name="from[]"
-                                                    value="{{ $item->from->format('H:i') }}">
+                                                    @if (!empty($item->from)) value="{{ $item->from->format('H:i') }}" @endif>
                                             </td>
                                             <td>
                                                 <input class="form-control" type="time" name="to[]"
-                                                    value="{{ $item->to->format('H:i') }}">
+                                                    @if (!empty($item->to)) value="{{ $item->to->format('H:i') }}" @endif>
                                             </td>
 
                                         </tr>

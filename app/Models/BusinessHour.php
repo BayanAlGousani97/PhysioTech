@@ -50,7 +50,8 @@ class BusinessHour extends Model
     protected function from(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return new  \Illuminate\Database\Eloquent\Casts\Attribute(
-            set: fn ($value) => Carbon::createFromFormat('H:i', $value),
+            set: fn ($value) => empty($value) ? Carbon::createFromFormat('H:i', '00:00') : Carbon::createFromFormat('H:i', $value),
+
         );
     }
 
@@ -61,8 +62,7 @@ class BusinessHour extends Model
     protected function to(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return new  \Illuminate\Database\Eloquent\Casts\Attribute(
-            set: fn ($value) => Carbon::createFromFormat('H:i', $value),
-
+            set: fn ($value) => empty($value) ? Carbon::createFromFormat('H:i', '00:00') : Carbon::createFromFormat('H:i', $value),
         );
     }
     protected $casts = [

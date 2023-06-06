@@ -66,7 +66,7 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('about.index') }}">
                     <i class="fas fa-fw fa-info"></i>
                     <span>About us</span></a>
             </li>

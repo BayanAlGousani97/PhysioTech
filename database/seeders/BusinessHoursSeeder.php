@@ -18,49 +18,49 @@ class BusinessHoursSeeder extends Seeder
     {
         $businessHour = new BusinessHour;
         $businessHour->day = 1;
-        $businessHour->from = Carbon::createFromTime('09', '00', '00');
-        $businessHour->to = Carbon::createFromTime('18', '00', '00');
-        $businessHour->status = 1;
+        $businessHour->from = "09:00";
+        $businessHour->to = "18:00";
+        $businessHour->status = 'open';
         $businessHour->save();
 
         $businessHour = new BusinessHour;
         $businessHour->day = 2;
-        $businessHour->from = Carbon::createFromTime('09', '00', '00');
-        $businessHour->to = Carbon::createFromTime('18', '00', '00');
-        $businessHour->status = 1;
+        $businessHour->from = "09:00";
+        $businessHour->to = "18:00";
+        $businessHour->status = 'open';
         $businessHour->save();
 
         $businessHour = new BusinessHour;
         $businessHour->day = 3;
-        $businessHour->from = Carbon::createFromTime('09', '00', '00');
-        $businessHour->to = Carbon::createFromTime('18', '00', '00');
-        $businessHour->status = 1;
+        $businessHour->from = "09:00";
+        $businessHour->to = "18:00";
+        $businessHour->status = 'open';
         $businessHour->save();
 
         $businessHour = new BusinessHour;
         $businessHour->day = 4;
-        $businessHour->from = Carbon::createFromTime('09', '00', '00');
-        $businessHour->to = Carbon::createFromTime('18', '00', '00');
-        $businessHour->status = 1;
+        $businessHour->from = "09:00";
+        $businessHour->to = "18:00";
+        $businessHour->status = 'open';
         $businessHour->save();
 
         $businessHour = new BusinessHour;
         $businessHour->day = 5;
-        $businessHour->from = Carbon::createFromTime('09', '00', '00');
-        $businessHour->to = Carbon::createFromTime('18', '00', '00');
-        $businessHour->status = 1;
+        $businessHour->from = "09:00";
+        $businessHour->to = "18:00";
+        $businessHour->status = 'open';
         $businessHour->save();
 
         $businessHour = new BusinessHour;
         $businessHour->day = 6;
-        $businessHour->from = Carbon::createFromTime('09', '00', '00');
-        $businessHour->to = Carbon::createFromTime('18', '00', '00');
-        $businessHour->status = 1;
+        $businessHour->from = "09:00";
+        $businessHour->to = "18:00";
+        $businessHour->status = 'open';
         $businessHour->save();
 
         $businessHour = new BusinessHour;
         $businessHour->day = 7;
-        $businessHour->status = 0;
+        $businessHour->status = 'close';
         $businessHour->save();
     }
 }

@@ -30,6 +30,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::get('/contact', [PagesController::class, 'contact'])->name('contact.index');
     Route::post('/contact', [PagesController::class, 'updateContact'])->name('contact.update');
+
+    Route::get('/about', [PagesController::class, 'about'])->name('about.index');
+    Route::post('/about', [PagesController::class, 'updateAbout'])->name('about.update');
 });
 
 Route::middleware('auth')->group(function () {

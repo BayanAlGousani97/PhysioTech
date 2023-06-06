@@ -101,10 +101,9 @@ class PagesController extends Controller
             $businessHourTitle = Section::where('slug', 'business-hours')->first();
             $businessHourTitle->title = ['en' => $request->businesshour_en, 'ar' => $request->businesshour_ar];
             $businessHourTitle->save();
-            // dd($request->status);
-
 
             $businessHours = BusinessHour::get();
+
             foreach ($businessHours as $i => $item) {
                 $item->update(['to' => $request->to[$i], 'from' => $request->from[$i], 'status' => $request->status[$i]]);
             }
@@ -153,6 +152,42 @@ class PagesController extends Controller
             $contact->map = $request->map;
             $contact->save();
 
+
+            return back(); // TODO return with success
+        } catch (\Throwable $th) {
+            // TODO return with failed
+        }
+    }
+
+    public function about()
+    {
+        $about = Section::where('slug', 'about-us')->first();
+        $about = $about->getTranslations();
+
+        return view('admin.about', compact('about'));
+    }
+
+    public function updateAbout(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required|string',
+            'title_ar' => 'required|string',
+            'description_ar' => '',
+            'description_en' => '',
+            'image_ar' => '',
+            'image_en' => '',
+        ]);
+        // if ($validator->fails()) {
+        //     // TODO return with failed
+        // }
+
+        try {
+            $aboutUs = Section::where('slug', 'about-us')->first();
+            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            // TODO : process upload images ..
+            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
+            $aboutUs->save();
 
             return back(); // TODO return with success
         } catch (\Throwable $th) {
