@@ -75,26 +75,39 @@ class PagesController extends Controller
         $validator = Validator::make($request->all(), [
             'summary_ar' => 'required|string',
             'summary_en' => 'required|string',
-            'slogan_ar' => 'required|string',
-            'slogan_en' => 'required|string',
+            'businesshour_en' => '',
+            'businesshour_ar' => '',
+            'from' => 'array|required',
+            'to' => 'arraarray|requiredy|required',
+            'status' => '',
+            'business_day' => 'array|required'
+
         ]);
-        if ($validator->fails()) {
-            // TODO return with failed
-        }
+        // if ($validator->fails()) {
+        //     // TODO return with failed
+        // }
 
         try {
-            $header = Info::first();
+            $footer = Info::first();
 
-            if (!$header)
-                $header = new Info;
+            if (!$footer)
+                $footer = new Info;
 
-            $titleTranslations = ['en' => $request->title_en, 'ar' => $request->title_ar];
-            $header->setTranslations('title', $titleTranslations);
+            $titleTranslations = ['en' => $request->summary_en, 'ar' => $request->summary_ar];
+            $footer->setTranslations('summary', $titleTranslations);
+            $footer->save();
 
-            $sloganTranslations = ['en' => $request->slogan_en, 'ar' => $request->slogan_ar];
-            $header->setTranslations('slogan', $sloganTranslations);
 
-            $header->save();
+            $businessHourTitle = Section::where('slug', 'business-hours')->first();
+            $businessHourTitle->title = ['en' => $request->businesshour_en, 'ar' => $request->businesshour_ar];
+            $businessHourTitle->save();
+            // dd($request->status);
+
+
+            $businessHours = BusinessHour::get();
+            foreach ($businessHours as $i => $item) {
+                $item->update(['to' => $request->to[$i], 'from' => $request->from[$i], 'status' => $request->status[$i]]);
+            }
 
             return back(); // TODO return with success
         } catch (\Throwable $th) {
@@ -105,35 +118,41 @@ class PagesController extends Controller
     public function contact()
     {
         $info = Info::first();
-        $info = $info->getTranslations();
-        return view('admin.contact', compact('info'));
+        $translateFields = $info->getTranslations();
+        return view('admin.contact', compact('info', 'translateFields'));
     }
 
     public function updateContact(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'summary_ar' => 'required|string',
-            'summary_en' => 'required|string',
-            'slogan_ar' => 'required|string',
-            'slogan_en' => 'required|string',
+            'address_en' => 'required|string',
+            'address_ar' => 'required|string',
+            'phone_en' => 'required|string',
+            'phone_ar' => 'required|string',
         ]);
-        if ($validator->fails()) {
-            // TODO return with failed
-        }
 
         try {
-            $header = Info::first();
+            $contact = Info::first();
 
-            if (!$header)
-                $header = new Info;
+            if (!$contact)
+                $contact = new Info;
 
-            $titleTranslations = ['en' => $request->title_en, 'ar' => $request->title_ar];
-            $header->setTranslations('title', $titleTranslations);
+            $addressTranslations = ['en' => $request->address_en, 'ar' => $request->address_ar];
+            $contact->setTranslations('address', $addressTranslations);
+            $phoneTranslations = ['en' => $request->phone_en, 'ar' => $request->phone_ar];
+            $contact->setTranslations('phone', $phoneTranslations);
 
-            $sloganTranslations = ['en' => $request->slogan_en, 'ar' => $request->slogan_ar];
-            $header->setTranslations('slogan', $sloganTranslations);
+            $contact->email = $request->email;
+            $contact->whatsapp = $request->whatsapp;
+            $contact->facebook = $request->facebook;
+            $contact->instagram = $request->instagram;
+            $contact->telegram = $request->telegram;
+            $contact->youtube = $request->youtube;
+            $contact->snapchat = $request->snapchat;
+            $contact->twitter = $request->twitter;
+            $contact->map = $request->map;
+            $contact->save();
 
-            $header->save();
 
             return back(); // TODO return with success
         } catch (\Throwable $th) {

@@ -3,7 +3,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Content Row -->
-        <form method="POST" action="{{ route('header.update') }}">
+        <form method="POST" action="{{ route('footer.update') }}">
             @csrf
             <div class="row mb-2">
                 <div class="col-lg-6">
@@ -77,178 +77,60 @@
                             </h6>
                         </a>
                         <div class="collapse show" id="collapseCardBusiness">
-                            <div class="card-body text-center">
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <label class="col-form-label">Day</label>
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option selected value="sat">Sat</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wed">Wed</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="col-form-label">From</label>
-                                        <input class="form-control" type="time" name="from[]" value="">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="col-form-label">To</label>
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <label class="col-form-label">Close</label><br>
-                                        <input class="checkbox-control" type="checkbox" name="status[]">
-                                    </div>
-                                </div>
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option value="sat">Sat</option>
-                                            <option selected value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wed">Wed</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
+                            <div class="card-body text-center table-responsive">
+                                <table class="table table-sm ">
+                                    <thead>
+                                        <tr>
+                                            <td>Day</td>
+                                            <td>From</td>
+                                            <td>To</td>
+                                            <td>Close</td>
+                                        </tr>
+                                    </thead>
+                                    @foreach ($businessHours as $item)
+                                        <tr>
+                                            <td>
+                                                <select class="form-select" name="business_day[]" required
+                                                    aria-label="Default select example">
+                                                    <option value="1"
+                                                        @if ($item->day == 1) selected @endif>Sat</option>
+                                                    <option value="2"
+                                                        @if ($item->day == 2) selected @endif>Sun</option>
+                                                    <option value="3"
+                                                        @if ($item->day == 3) selected @endif>Mon</option>
+                                                    <option value="4"
+                                                        @if ($item->day == 4) selected @endif>Tue</option>
+                                                    <option value="5"
+                                                        @if ($item->day == 5) selected @endif>Wed</option>
+                                                    <option value="6"
+                                                        @if ($item->day == 6) selected @endif>Thur</option>
+                                                    <option value="7"
+                                                        @if ($item->day == 7) selected @endif>Fri</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select" name="status[]" required
+                                                    aria-label="Default select example">
+                                                    <option @if ($item->status == 'open') selected @endif
+                                                        value="open">Open in
+                                                        bussiness
+                                                        hours</option>
+                                                    <option @if ($item->status == 'close') selected @endif
+                                                        value="close">Close</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input class="form-control" type="time" name="from[]"
+                                                    value="{{ $item->from->format('H:i') }}">
+                                            </td>
+                                            <td>
+                                                <input class="form-control" type="time" name="to[]"
+                                                    value="{{ $item->to->format('H:i') }}">
+                                            </td>
 
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="from">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="checkbox-control" type="checkbox" name="status[]">
-                                    </div>
-                                </div>
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option value="sat">Sat</option>
-                                            <option value="sun">Sun</option>
-                                            <option selected value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wed">Wed</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="from[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="checkbox-control" type="checkbox" name="status[]">
-                                    </div>
-                                </div>
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option value="sat">Sat</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue" selected>Tue</option>
-                                            <option value="wed">Wed</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="from[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="checkbox-control" type="checkbox" name="status[]">
-                                    </div>
-                                </div>
-
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option value="sat">Sat</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wed" selected>Wed</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri">Fri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="from[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="checkbox-control" type="checkbox" name="status[]">
-                                    </div>
-                                </div>
-
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option value="sat">Sat</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wed">Wed</option>
-                                            <option value="thur" selected>Thur</option>
-                                            <option value="fri">Fri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="from[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="checkbox-control" type="checkbox" name="status[]">
-                                    </div>
-                                </div>
-
-                                <div class="row m-2">
-                                    <div class="col-lg-3">
-                                        <select class="form-select" name="business_day[]" required
-                                            aria-label="Default select example">
-                                            <option value="sat">Sat</option>
-                                            <option value="sun">Sun</option>
-                                            <option value="mon">Mon</option>
-                                            <option value="tue">Tue</option>
-                                            <option value="wed">Wed</option>
-                                            <option value="thur">Thur</option>
-                                            <option value="fri" selected>Fri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="from[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="form-control" type="time" name="to[]">
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <input class="checkbox-control" type="checkbox" name="status[]" checked>
-                                    </div>
-                                </div>
-
-
+                                        </tr>
+                                    @endforeach
+                                </table>
                             </div>
                         </div>
                     </div>
