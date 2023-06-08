@@ -162,9 +162,9 @@ class PagesController extends Controller
     public function about()
     {
         $about = Section::where('slug', 'about-us')->first();
-        $about = $about->getTranslations();
+        $aboutTranslate = $about->getTranslations();
 
-        return view('admin.about', compact('about'));
+        return view('admin.about', compact('about', 'aboutTranslate'));
     }
 
     public function updateAbout(Request $request)
@@ -198,9 +198,9 @@ class PagesController extends Controller
     public function goal()
     {
         $ourGoal = Section::where('slug', 'our-goal')->first();
-        $ourGoal = $ourGoal->getTranslations();
+        $ourGoalTranslate = $ourGoal->getTranslations();
 
-        return view('admin.ourGoal', compact('ourGoal'));
+        return view('admin.ourGoal', compact('ourGoal', 'ourGoalTranslate'));
     }
 
     public function updateGoal(Request $request)
@@ -234,9 +234,9 @@ class PagesController extends Controller
     public function mission()
     {
         $ourMission = Section::where('slug', 'our-mission')->first();
-        $ourMission = $ourMission->getTranslations();
+        $ourMissionTranslate = $ourMission->getTranslations();
 
-        return view('admin.ourMission', compact('ourMission'));
+        return view('admin.ourMission', compact('ourMission', 'ourMissionTranslate'));
     }
 
     public function updateMission(Request $request)
@@ -270,9 +270,9 @@ class PagesController extends Controller
     public function vision()
     {
         $ourVision = Section::where('slug', 'our-vision')->first();
-        $ourVision = $ourVision->getTranslations();
+        $ourVisionTranslate = $ourVision->getTranslations();
 
-        return view('admin.ourVision', compact('ourVision'));
+        return view('admin.ourVision', compact('ourVision', 'ourVisionTranslate'));
     }
 
     public function updateVision(Request $request)
