@@ -194,4 +194,112 @@ class PagesController extends Controller
             // TODO return with failed
         }
     }
+
+    public function goal()
+    {
+        $ourGoal = Section::where('slug', 'our-goal')->first();
+        $ourGoal = $ourGoal->getTranslations();
+
+        return view('admin.ourGoal', compact('ourGoal'));
+    }
+
+    public function updateGoal(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required|string',
+            'title_ar' => 'required|string',
+            'description_ar' => '',
+            'description_en' => '',
+            'image_ar' => '',
+            'image_en' => '',
+        ]);
+        // if ($validator->fails()) {
+        //     // TODO return with failed
+        // }
+
+        try {
+            $aboutUs = Section::where('slug', 'our-goal')->first();
+            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            // TODO : process upload images ..
+            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
+            $aboutUs->save();
+
+            return back(); // TODO return with success
+        } catch (\Throwable $th) {
+            // TODO return with failed
+        }
+    }
+
+    public function mission()
+    {
+        $ourMission = Section::where('slug', 'our-mission')->first();
+        $ourMission = $ourMission->getTranslations();
+
+        return view('admin.ourMission', compact('ourMission'));
+    }
+
+    public function updateMission(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required|string',
+            'title_ar' => 'required|string',
+            'description_ar' => '',
+            'description_en' => '',
+            'image_ar' => '',
+            'image_en' => '',
+        ]);
+        // if ($validator->fails()) {
+        //     // TODO return with failed
+        // }
+
+        try {
+            $aboutUs = Section::where('slug', 'our-mission')->first();
+            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            // TODO : process upload images ..
+            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
+            $aboutUs->save();
+
+            return back(); // TODO return with success
+        } catch (\Throwable $th) {
+            // TODO return with failed
+        }
+    }
+
+    public function vision()
+    {
+        $ourVision = Section::where('slug', 'our-vision')->first();
+        $ourVision = $ourVision->getTranslations();
+
+        return view('admin.ourVision', compact('ourVision'));
+    }
+
+    public function updateVision(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required|string',
+            'title_ar' => 'required|string',
+            'description_ar' => '',
+            'description_en' => '',
+            'image_ar' => '',
+            'image_en' => '',
+        ]);
+        // if ($validator->fails()) {
+        //     // TODO return with failed
+        // }
+
+        try {
+            $aboutUs = Section::where('slug', 'our-vision')->first();
+            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            // TODO : process upload images ..
+            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
+            $aboutUs->save();
+
+            return back(); // TODO return with success
+        } catch (\Throwable $th) {
+            // TODO return with failed
+        }
+    }
 }

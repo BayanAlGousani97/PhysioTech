@@ -60,16 +60,37 @@
                     <span>Footer Content</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('banners.index') }}">
+                    <i class="fas fa-fw fa-image"></i>
+                    <span>Banners</span></a>
+            </li>
+
             <!-- Other Sections -->
             <div class="sidebar-heading">
                 Other Sections
             </div>
-
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('about.index') }}">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-info"></i>
-                    <span>About us</span></a>
+                    <span> Other Sections
+                    </span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Sections:</h6>
+                        <a class="collapse-item" href="{{ route('about.index') }}">About us</a>
+                        <a class="collapse-item" href="{{ route('goal.index') }}">Our Goal</a>
+                        <a class="collapse-item" href="{{ route('mission.index') }}">Our Mission</a>
+                        <a class="collapse-item" href="{{ route('vision.index') }}">Our Vision</a>
+                    </div>
+                </div>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
             <li class="nav-item">
                 <a class="nav-link" href="tables.html">
@@ -129,7 +150,8 @@
                                 aria-labelledby="userDropdown">
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

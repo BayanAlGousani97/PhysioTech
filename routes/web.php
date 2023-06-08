@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControllers\PagesController;
+use App\Http\Controllers\AdminControllers\BannersController;
 use App\Http\Controllers\FrontControllers\ViewsController;
 
 /*
@@ -33,6 +34,20 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::get('/about', [PagesController::class, 'about'])->name('about.index');
     Route::post('/about', [PagesController::class, 'updateAbout'])->name('about.update');
+
+    Route::get('/goal', [PagesController::class, 'goal'])->name('goal.index');
+    Route::post('/goal', [PagesController::class, 'updateGoal'])->name('goal.update');
+
+    Route::get('/mission', [PagesController::class, 'mission'])->name('mission.index');
+    Route::post('/mission', [PagesController::class, 'updateMission'])->name('mission.update');
+
+    Route::get('/vision', [PagesController::class, 'vision'])->name('vision.index');
+    Route::post('/vision', [PagesController::class, 'updateVision'])->name('vision.update');
+
+    Route::get('/banners', [BannersController::class, 'index'])->name('banners.index');
+    Route::post('/banners/{id}', [BannersController::class, 'update'])->name('banners.update');
+    Route::post('/banners', [BannersController::class, 'store'])->name('banners.store');
+    Route::delete('/banners/{id}', [BannersController::class, 'destroy'])->name('banners.destroy');
 });
 
 Route::middleware('auth')->group(function () {
