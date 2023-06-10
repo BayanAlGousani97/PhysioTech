@@ -45,9 +45,10 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::post('/vision', [PagesController::class, 'updateVision'])->name('vision.update');
 
     Route::get('/banners', [BannersController::class, 'index'])->name('banners.index');
-    Route::post('/banners/{id}', [BannersController::class, 'update'])->name('banners.update');
     Route::post('/banners', [BannersController::class, 'store'])->name('banners.store');
-    Route::delete('/banners/{id}', [BannersController::class, 'destroy'])->name('banners.destroy');
+    Route::get('/banners/{id}', [BannersController::class, 'edit'])->name('banners.edit');
+    Route::put('/banners/{id}', [BannersController::class, 'update'])->name('banners.update');
+    Route::post('/banners/destroy', [BannersController::class, 'destroy'])->name('banners.destroy');
 });
 
 Route::middleware('auth')->group(function () {

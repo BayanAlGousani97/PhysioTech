@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name')->nullable();
-            $table->string('image')->nullable();
+            $table->text('full_name')->nullable();
+            $table->text('image')->nullable();
             $table->text('description')->nullable();
             $table->tinyinteger('status')->default(1);
             $table->timestamps();

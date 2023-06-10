@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class BannersController extends Controller
 {
@@ -14,7 +17,9 @@ class BannersController extends Controller
      */
     public function index()
     {
-        //
+        $banners = Banner::get();
+
+        return view('admin.banners.index', compact('banners'));
     }
 
     /**
@@ -57,7 +62,9 @@ class BannersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $banner = Banner::find($id);
+        $bannerT = $banner->getTranslations();
+        return view('admin.banners.edit', compact('banner', 'bannerT'));
     }
 
     /**
@@ -69,7 +76,34 @@ class BannersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required|string',
+            'title_ar' => 'required|string',
+            'description_ar' => '',
+            'description_en' => '',
+            'image_ar' => '',
+            'image_en' => '',
+        ]);
+        // if ($validator->fails()) {
+        //     // TODO return with failed
+        // }
+
+        try {
+            $banner = Banner::find($id);
+
+            if (!$banner)
+                abort(404);
+
+            $banner->update([
+                'title' => ['en' => $request->title_en, 'ar' => $request->title_ar],
+                'description' => ['en' => $request->description_en, 'ar' => $request->description_ar],
+                'image' => ['en' => $request->image_en, 'ar' => $request->image_ar],
+            ]);
+
+            return back();
+        } catch (\Throwable $th) {
+            abort(500);
+        }
     }
 
     /**
@@ -78,8 +112,18 @@ class BannersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $banner = Banner::find($request->id);
+
+            if (!$banner)
+                abort(404);
+
+            $banner->delete();
+            return response(['data' => '', 'message' => 'Your banner has been deleted succssfully']);
+        } catch (\Throwable $th) {
+            abort(500);
+        }
     }
 }

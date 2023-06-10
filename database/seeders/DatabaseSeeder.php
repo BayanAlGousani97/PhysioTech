@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(InfoSeeder::class);
         $this->call(SectionsSeeder::class);
         $this->call(BusinessHoursSeeder::class);
+        $this->call(BannersSeeder::class);
     }
 }
