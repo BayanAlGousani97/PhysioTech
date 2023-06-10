@@ -67,5 +67,12 @@ class SectionsSeeder extends Seeder
             'ar' => 'رؤيتنا رؤيتنا رؤيتنا رؤيتنا رؤيتنا رؤيتنا رؤيتنا رؤيتنا',
         ];
         $vision->save();
+
+
+        $service = new Section;
+        $service->name = ['en' => 'Our Services', 'ar' => 'خدماتنا'];
+        $service->slug = Str::slug("Our Services");
+        $service->title = ['en' => 'Our vision Our vision Our vision', 'ar' => 'رؤيتنا رؤيتنا رؤيتنا'];
+        $service->save();
     }
 }

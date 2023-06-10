@@ -96,7 +96,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('services.index') }}">
                     <i class="fas fa-fw fa-check-circle"></i>
                     <span>Services</span></a>
             </li>

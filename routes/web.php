@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControllers\PagesController;
 use App\Http\Controllers\AdminControllers\BannersController;
+use App\Http\Controllers\AdminControllers\ServicesController;
 use App\Http\Controllers\FrontControllers\ViewsController;
 
 /*
@@ -49,6 +50,14 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/banners/{id}', [BannersController::class, 'edit'])->name('banners.edit');
     Route::put('/banners/{id}', [BannersController::class, 'update'])->name('banners.update');
     Route::post('/banners/destroy', [BannersController::class, 'destroy'])->name('banners.destroy');
+
+    Route::post('/sections/services', [ServicesController::class, 'updateSectionService'])->name('services.section.update');
+    Route::get('/services', [ServicesController::class, 'index'])->name('services.index');
+    Route::get('/services/create', [ServicesController::class, 'create'])->name('services.create');
+    Route::post('/services', [ServicesController::class, 'store'])->name('services.store');
+    Route::get('/services/{id}', [ServicesController::class, 'edit'])->name('services.edit');
+    Route::put('/services/{id}', [ServicesController::class, 'update'])->name('services.update');
+    Route::post('/services/destroy', [ServicesController::class, 'destroy'])->name('services.destroy');
 });
 
 Route::middleware('auth')->group(function () {
