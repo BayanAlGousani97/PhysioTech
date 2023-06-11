@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers;
 use App\Models\Section;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use Throwable;
 
 class ServicesController extends Controller
 {
@@ -55,18 +59,19 @@ class ServicesController extends Controller
     public function store(Request $request)
     {
         // TODO: Validation ..
-        // TODO: uploading images .
 
         try {
             $service = new Service;
             $service->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
             $service->short_description = ['en' => $request->short_description_en, 'ar' => $request->short_description_ar];
             $service->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
-            $service->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/services", Str::slug($request->name_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/services", Str::slug($request->name_ar . "-" . rand() . "-ar"));
+            $service->image = ['en' => $imageEn, 'ar' => $imageAr];
             $service->save();
 
             return redirect()->route('services.index');
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             abort(500);
         }
     }
@@ -105,6 +110,7 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO Validations..
         // $validator = Validator::make($request->all(), [
         //     'title_en' => 'required|string',
         //     'title_ar' => 'required|string',
@@ -119,16 +125,22 @@ class ServicesController extends Controller
 
         try {
             $service = Service::find($id);
-
+            $serviceT = $service->getTranslations();
             if (!$service)
                 abort(404);
 
-            $service->update([
-                'name' => ['en' => $request->name_en, 'ar' => $request->name_ar],
-                'description' => ['en' => $request->description_en, 'ar' => $request->description_ar],
-                'short_description' => ['en' => $request->short_description_en, 'ar' => $request->short_description_ar],
-                'image' => ['en' => $request->image_en, 'ar' => $request->image_ar],
-            ]);
+            $service->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
+            $service->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            $service->short_description = ['en' => $request->short_description_en, 'ar' => $request->short_description_ar];
+
+            Helpers::deleteFile("img/services/" . $serviceT['image']['en']);
+            Helpers::deleteFile("img/services/" . $serviceT['image']['ar']);
+
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/services", Str::slug($request->name_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/services", Str::slug($request->name_ar . "-" . rand() . "-ar"));
+            $service->image = ['en' => $imageEn, 'ar' => $imageAr];
+
+            $service->save();
 
             return redirect()->route('services.index');
         } catch (\Throwable $th) {

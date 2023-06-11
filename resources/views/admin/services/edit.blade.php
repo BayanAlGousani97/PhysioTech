@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <!-- Content Row -->
 
-        <form method="POST" action="{{ route('services.update', $service->id) }}">
+        <form method="POST" action="{{ route('services.update', $service->id) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="row mb-2">

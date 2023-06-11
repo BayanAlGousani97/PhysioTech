@@ -3,7 +3,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Content Row -->
-        <form method="POST" action="{{ route('services.store') }}">
+        <form method="POST" action="{{ route('services.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="row mb-2">
                 <div class="col-lg-6">

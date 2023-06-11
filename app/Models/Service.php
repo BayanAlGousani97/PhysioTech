@@ -59,27 +59,27 @@ class Service extends Model
     public function getImageLangFullPath()
     {
         // Todo : set default images asset('/img/default-logo.png')
-        $banner = $this->getTranslations();
-        if (!$banner)
+        $service = $this->getTranslations();
+        if (!$service)
             return [
                 ['en' => ''],
                 ['ar' => '']
             ];
 
-        if (!$banner['image'])
+        if (!$service['image'])
             return [
                 ['en' => ''],
                 ['ar' => '']
             ];
 
-        $imageEn = $banner['image']['en'] ? $banner['image']['en'] : '';
-        $imageAr = $banner['image']['ar'] ? $banner['image']['ar'] : '';
+        $imageEn = $service['image']['en'] ? $service['image']['en'] : '';
+        $imageAr = $service['image']['ar'] ? $service['image']['ar'] : '';
 
         $hostwithHttp = request()->getSchemeAndHttpHost();
         return
             [
-                'en' => $hostwithHttp . '/img/banners/' . $imageEn,
-                'ar' => $hostwithHttp . '/img/banners/' . $imageAr
+                'en' => $hostwithHttp . '/img/services/' . $imageEn,
+                'ar' => $hostwithHttp . '/img/services/' . $imageAr
             ];
     }
 }
