@@ -93,19 +93,19 @@
                                                 <select class="form-select" name="business_day[]" required
                                                     aria-label="Default select example">
                                                     <option value="1"
-                                                        @if ($item->day == 1) selected @endif>Sat</option>
+                                                        @if ($item->day == 'Sat') selected @endif>Sat</option>
                                                     <option value="2"
-                                                        @if ($item->day == 2) selected @endif>Sun</option>
+                                                        @if ($item->day == 'Sun') selected @endif>Sun</option>
                                                     <option value="3"
-                                                        @if ($item->day == 3) selected @endif>Mon</option>
+                                                        @if ($item->day == 'Mon') selected @endif>Mon</option>
                                                     <option value="4"
-                                                        @if ($item->day == 4) selected @endif>Tue</option>
+                                                        @if ($item->day == 'Tue') selected @endif>Tue</option>
                                                     <option value="5"
-                                                        @if ($item->day == 5) selected @endif>Wed</option>
+                                                        @if ($item->day == 'Wed') selected @endif>Wed</option>
                                                     <option value="6"
-                                                        @if ($item->day == 6) selected @endif>Thur</option>
+                                                        @if ($item->day == 'Thur') selected @endif>Thur</option>
                                                     <option value="7"
-                                                        @if ($item->day == 7) selected @endif>Fri</option>
+                                                        @if ($item->day == 'Fri') selected @endif>Fri</option>
                                                 </select>
                                             </td>
                                             <td>

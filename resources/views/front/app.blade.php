@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->isLocale('ar') ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8">
@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
 
 </head>
 
@@ -96,37 +97,46 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="{{ route('front.index') }}">
-                <h3 class="text-main">Physio Tech</h3>
-                <p class="text-muted small ">Physiotherapy | Home care</p>
+                <h3 class="text-main">{{ trans('views.site.title') }}</h3>
+                <p class="text-muted small ">{{ $infoT['slogan'][str_replace('_', '-', app()->getLocale())] }}</p>
             </a>
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
-                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <ul class="navbar-nav ml-auto @if (app()->isLocale('en')) me-auto @endif my-2 my-lg-0 navbar-nav-scroll"
+                    style="--bs-scroll-height: 100px;">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="#">{{ trans('views.site.nav.home') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
+                        <a href="#about" class="nav-link">{{ trans('views.site.nav.about') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#services" class="nav-link ">Services</a>
+                        <a href="#services" class="nav-link ">{{ trans('views.site.nav.services') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#doctors" class=" nav-link">Doctors</a>
+                        <a href="#doctors" class=" nav-link">{{ trans('views.site.nav.doctors') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contact" class=" nav-link">Contact</a>
+                        <a href="#contact" class=" nav-link">{{ trans('views.site.nav.contact') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contact" class="nav-link">arabic</a>
+                        <a href="@if (app()->isLocale('en')) {{ route('ar') }} @else {{ route('en') }} @endif"
+                            class="nav-link">
+                            @if (app()->isLocale('en'))
+                                عربي
+                            @else
+                                English
+                            @endif
+                        </a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <button class="btn btn-primary" type="submit">Book Appointment</button>
+                <form class="d-flex @if (app()->isLocale('ar')) me-auto @endif">
+                    <button class="btn btn-primary"
+                        type="submit">{{ trans('views.site.nav.bookAppointment') }}</button>
                 </form>
             </div>
         </div>
@@ -141,60 +151,109 @@
             <div class="row g-5">
                 <div class="col-md-6">
                     <h1 class="text-second mb-4"><img class="img-fluid me-2" src="img/hero-1.png" alt=""
-                            style="width: 45px;">PhysioTech</h1>
-                    <span>This text is an experimental text and can be replaced with other content describing the
-                        business,
-                        This text is an experimental text and can be replaced with other content describing the
-                        business</span>
+                            style="width: 45px;">{{ trans('views.site.title') }}</h1>
+                    <span>{{ $infoT['summary'][str_replace('_', '-', app()->getLocale())] }}</span>
                 </div>
                 <div class="col-md-6">
-                    <h5 class="mb-4">Bussiness hours</h5>
-                    <p>This text is an experimental text and can be replaced with other content describing the business
+                    <h5 class="mb-4">{{ $businessSection->name }}</h5>
+                    <p>{{ $businessSection->title }}
                     </p>
                     <div class="position-relative">
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-check bg-light text-main btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span> Sat - Thur : From 09:00 AM To 09:00 PM</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-check bg-light text-main btn-sm-square rounded-circle me-3 fw-bold"></i>
-                            <span>Fri: Closed</span>
-                        </div>
+                        @foreach ($businessHours as $item)
+                            @if ($item->status == 'open')
+                                <div class="d-flex align-items-center">
+                                    <i
+                                        class="fa fa-check bg-light text-main btn-sm-square rounded-circle me-3 fw-bold"></i>
+                                    <span> {{ $item->day }} : {{ trans('views.site.from') }}
+                                        {{ $item->from->translatedFormat('h:i a') }} {{ trans('views.site.to') }}
+                                        {{ $item->to->translatedFormat('h:i a') }}</span>
+                                </div>
+                            @else
+                                <div class="d-flex align-items-center">
+                                    <i
+                                        class="fa fa-check bg-light text-main btn-sm-square rounded-circle me-3 fw-bold"></i>
+                                    <span>{{ $item->day }}: {{ trans('views.site.close') }}</span>
+                                </div>
+                            @endif
+                        @endforeach
+
+
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h5 class="mb-4">{{ trans('views.site.footer.getInTouch') }}</h5>
+                    <p><i class="fa fa-map-marker-alt me-3 ms-1"></i>{{ $info->address }}
+                    </p>
+                    <p><i class="fa fa-phone-alt me-3 ms-1"></i>{{ $info->phone }}
+                    </p>
+                    <p><i class="fa fa-envelope me-3 ms-1"></i>{{ $info->email }}</p>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Our Services</h5>
-                    <a class="btn btn-link" href="">neurological injuries</a>
-                    <a class="btn btn-link" href="">Musculoskeletal injuries</a>
-                    <a class="btn btn-link" href="">Heart and chest diseases</a>
-                    <a class="btn btn-link" href="">Sports injuries</a>
-                    <a class="btn btn-link" href="">Home Care</a>
+                    <h5 class="mb-4">{{ trans('views.site.nav.services') }}</h5>
+                    @foreach ($services as $item)
+                        <p> <a class="btn btn-link" href="">
+                                <span class="p-1">{{ $item->name }}</span>
+                            </a></p>
+                    @endforeach
 
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Quick Links</h5>
-                    <a class="btn btn-link" href="#about">About Us</a>
-                    <a class="btn btn-link" href="#contant">Contact Us</a>
-                    <a class="btn btn-link" href="#services">Our Services</a>
-                    <a class="btn btn-link" href="#">Terms & Condition</a>
+                    <h5 class="mb-4">{{ trans('views.site.foorer.quickLinks') }}</h5>
+                    <p><a class="btn btn-link" href="#about">
+                            <span class="p-1"> {{ trans('views.site.nav.about') }}</span>
+                        </a></p>
+                    <p><a class="btn btn-link" href="#contant">
+                            <span class="p-1">{{ trans('views.site.nav.contact') }}
+                            </span></a>
+                    </p>
+                    <p><a class="btn btn-link" href="#services">
+                            <span class="p-1">{{ trans('views.site.nav.services') }}
+                            </span></a>
+                    </p>
+                    <p><a class="btn btn-link" href="#">
+                            <span class="p-1">{{ trans('views.site.pages.termsCondition') }}
+                            </span></a>
+                    </p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Follow Us</h5>
+                    <h5 class="mb-4">{{ trans('views.site.footer.followUs') }}</h5>
                     <div class="d-flex">
-                        <a class="btn btn-square rounded-circle me-1" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square rounded-circle me-1" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square rounded-circle me-1" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square rounded-circle me-1" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+                        @isset($info->instagram)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->instagram }}"><i
+                                    class="fab fa-instagram"></i></a>
+                        @endisset
+                        @isset($info->facebook)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->facebook }}"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        @endisset
+
+                        @isset($info->youtube)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->youtube }}"><i
+                                    class="fab fa-youtube"></i></a>
+                        @endisset
+                        @isset($info->linkedin)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->linkedin }}"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        @endisset
+
+                        @isset($info->whatsapp)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->whatsapp }}"><i
+                                    class="fab fa-whatsapp"></i></a>
+                        @endisset
+                        @isset($info->snapchat)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->snapchat }}"><i
+                                    class="fab fa-snapchat"></i></a>
+                        @endisset
+                        @isset($info->telegram)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->telegram }}"><i
+                                    class="fab fa-telegram"></i></a>
+                        @endisset
+                        @isset($info->twitter)
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->twitter }}"><i
+                                    class="fab fa-twitter"></i></a>
+                        @endisset
                     </div>
                 </div>
             </div>
@@ -203,7 +262,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">PhysioTech</a>, All Right Reserved | 2023
+                        &copy; <a href="#">{{ trans('views.site.title') }}</a>,
+                        {{ trans('views.site.footer.allRight') }} | 2023
                     </div>
                 </div>
             </div>

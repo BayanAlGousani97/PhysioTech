@@ -311,8 +311,8 @@ h6,
 
 /*** Footer ***/
 .footer .btn.btn-link {
-    display: block;
-    margin-bottom: 5px;
+    /* display: block; */
+    margin-bottom: 3px;
     padding: 0;
     text-align: left;
     color: var(--secondary);

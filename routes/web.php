@@ -19,7 +19,7 @@ use App\Http\Controllers\FrontControllers\ViewsController;
 */
 
 // Guest
-Route::get('/', [ViewsController::class, 'index'])->name('front.index');
+Route::get('/', [ViewsController::class, 'index'])->name('front.index')->middleware('set.locale');
 
 // Dashboard
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
@@ -60,10 +60,20 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::post('/services/destroy', [ServicesController::class, 'destroy'])->name('services.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', )->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+###################### Translation ######################
+Route::get('en', function () {
+    session(['locale' => 'en']);
+    return back();
+})->name('en');
+Route::get('ar', function () {
+    session(['locale' => 'ar']);
+    return back();
+})->name('ar');
 
 require __DIR__ . '/auth.php';
