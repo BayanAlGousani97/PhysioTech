@@ -23,7 +23,7 @@ return [
     'days.wed'=>'Wed',
     'days.thur'=>'Thur',
     'days.fri'=>'Fri',
-
+    'site.readMore'=>'Read More',
 
 
 

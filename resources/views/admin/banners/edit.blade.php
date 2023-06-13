@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <!-- Content Row -->
 
-        <form method="POST" action="{{ route('banners.update', $banner->id) }}">
+        <form method="POST" action="{{ route('banners.update', $banner->id) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="row mb-2">

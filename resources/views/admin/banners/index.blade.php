@@ -36,11 +36,11 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->description }}</td>
-                                    <td><img class="img-fluid w-25 h-25" src="{{ asset($item->image) }}"></td>
-                                    <td class="text-center"><a class="btn btn-warning btn-circle"
+                                    <td><img class="img-fluid w-20" src="{{ asset($item->image_en) }}"></td>
+                                    <td class="text-center"><a class="btn btn-warning btn-circle m-1"
                                             href="{{ route('banners.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
-                                        <a class="btn btn-danger btn-circle" onclick="deleteItem({{ $item->id }})"><i
-                                                class="fas fa-trash"></i></a>
+                                        <a class="btn btn-danger btn-circle m-1"
+                                            onclick="deleteItem({{ $item->id }})"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

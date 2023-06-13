@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers;
 use App\Models\BusinessHour;
 use App\Models\Info;
 use App\Models\Section;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Str;
 class PagesController extends Controller
 {
 
@@ -183,10 +184,16 @@ class PagesController extends Controller
 
         try {
             $aboutUs = Section::where('slug', 'about-us')->first();
+            $aboutUsT = $aboutUs->getTranslations();
             $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
             $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
-            // TODO : process upload images ..
-            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
+
+            Helpers::deleteFile("img/sections/" . $aboutUs->slug . "/" .$aboutUsT['image']['en']);
+            Helpers::deleteFile("img/sections/" . $aboutUs->slug . "/" . $aboutUsT['image']['ar']);
+
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/sections/". $aboutUs->slug, Str::slug($request->name_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/sections/". $aboutUs->slug, Str::slug($request->name_ar . "-" . rand() . "-ar"));
+            $aboutUs->image = ['en' => $imageEn, 'ar' => $imageAr];
             $aboutUs->save();
 
             return back(); // TODO return with success

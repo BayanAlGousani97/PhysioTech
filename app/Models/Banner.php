@@ -27,7 +27,6 @@ class Banner extends Model
 
     public $translatable = ['title', 'description', 'image'];
 
-
     /**
      * Get the image as a url in english
      *

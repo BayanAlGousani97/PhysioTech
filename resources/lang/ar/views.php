@@ -23,6 +23,8 @@ return [
     'days.wed'=>'الأربعاء',
     'days.thur'=>'الخميس',
     'days.fri'=>'الجمعة',
+    'site.readMore' => 'اقرأ المزيد',
+
 
 
 ];

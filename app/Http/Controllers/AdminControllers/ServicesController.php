@@ -125,9 +125,10 @@ class ServicesController extends Controller
 
         try {
             $service = Service::find($id);
-            $serviceT = $service->getTranslations();
             if (!$service)
                 abort(404);
+
+            $serviceT = $service->getTranslations();
 
             $service->name = ['en' => $request->name_en, 'ar' => $request->name_ar];
             $service->description = ['en' => $request->description_en, 'ar' => $request->description_ar];

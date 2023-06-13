@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Str;
 
 class BannersController extends Controller
 {
@@ -94,15 +95,22 @@ class BannersController extends Controller
             if (!$banner)
                 abort(404);
 
-            $banner->update([
-                'title' => ['en' => $request->title_en, 'ar' => $request->title_ar],
-                'description' => ['en' => $request->description_en, 'ar' => $request->description_ar],
-                'image' => ['en' => $request->image_en, 'ar' => $request->image_ar],
-            ]);
+            $bannerT = $banner->getTranslations();
 
+            $banner->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $banner->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+
+            Helpers::deleteFile("img/banners/" . $bannerT['image']['en']);
+            Helpers::deleteFile("img/banners/" . $bannerT['image']['ar']);
+
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/banners", Str::slug($request->title_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/banners", Str::slug($request->title_ar . "-" . rand() . "-ar"));
+            $banner->image = ['en' => $imageEn, 'ar' => $imageAr];
+            $banner->save();
             return back();
         } catch (\Throwable $th) {
-            abort(500);
+            // abort(500);
+            dd($th->getMessage());
         }
     }
 

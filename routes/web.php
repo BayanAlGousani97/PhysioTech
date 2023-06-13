@@ -20,6 +20,8 @@ use App\Http\Controllers\FrontControllers\ViewsController;
 
 // Guest
 Route::get('/', [ViewsController::class, 'index'])->name('front.index')->middleware('set.locale');
+Route::get('/services/{slug}', [ViewsController::class, 'service'])->name('front.service')->middleware('set.locale');
+
 
 // Dashboard
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {

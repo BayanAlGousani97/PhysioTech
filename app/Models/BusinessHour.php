@@ -51,10 +51,9 @@ class BusinessHour extends Model
     protected function day(): \Illuminate\Database\Eloquent\Casts\Attribute
     {
         return new \Illuminate\Database\Eloquent\Casts\Attribute(
-            get: fn ($value) => trans('views.days.'.self::$days[strtolower($value)])
+            get: fn ($value) => trans('views.days.'.self::$days[strtolower($value)]),
         );
     }
-    // (App::isLocale('en') ? $value : trans('categories.' . $this->slug))
 
     /**
      * @param  string  $value

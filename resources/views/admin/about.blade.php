@@ -3,7 +3,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Content Row -->
-        <form method="POST" action="{{ route('about.update') }}">
+        <form method="POST" action="{{ route('about.update') }}" enctype="multipart/form-data">
             @csrf
             <div class="row mb-2">
                 <div class="col-lg-6">
