@@ -28,5 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SectionsSeeder::class);
         $this->call(BusinessHoursSeeder::class);
         $this->call(BannersSeeder::class);
+        $this->call(DoctorsSeeder::class);
     }
 }

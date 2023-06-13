@@ -74,5 +74,20 @@ class SectionsSeeder extends Seeder
         $service->slug = Str::slug("Our Services");
         $service->title = ['en' => 'Our vision Our vision Our vision', 'ar' => 'رؤيتنا رؤيتنا رؤيتنا'];
         $service->save();
+
+        $doctor = new Section;
+        $doctor->name = ['en' => 'Doctors', 'ar' => 'أطباؤنا'];
+        $doctor->slug = Str::slug("Doctors");
+        $doctor->title = ['en' => 'We have the best doctors', 'ar' => 'لدينا أطباء نخبة على مستوى العالم'];
+        $doctor->save();
+
+
+        $contactUs = new Section;
+        $contactUs->name = ['en' => 'Contact Us', 'ar' => 'تواصل معنا'];
+        $contactUs->slug = Str::slug("Contact Us");
+        $contactUs->title = ['en' => 'We have the best doctors', 'ar' => 'لدينا أطباء نخبة على مستوى العالم'];
+        $contactUs->description = ['en' => 'We have the best doctors We have the best doctors', 'ar' => 'لدينا أطباء نخبة على مستوى العالم'];
+        $contactUs->image = ['en' => 'contact-us-en.png', 'ar' => 'contact-us-ar.png'];
+        $contactUs->save();
     }
 }

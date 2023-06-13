@@ -152,35 +152,18 @@
     <div class="container-xxl bg-light py-5" dir="ltr" id="doctors">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6 text-title">Doctors</h1>
-                <p class="text-main fs-5 mb-5">Diam dolor ipsum sit amet erat ipsum lorem sit</p>
+                <h1 class="display-6 text-title">{{ $doctorsSection->name }}</h1>
+                <p class="text-main fs-5 mb-5">{{ $doctorsSection->title }}</p>
             </div>
             <div class="owl-carousel roadmap-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="roadmap-item">
-                    <div class="roadmap-point"><span></span></div>
-                    <h5>Doctor 1</h5>
-                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"><span></span></div>
-                    <h5>Doctor 2</h5>
-                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"><span></span></div>
-                    <h5>Doctor 3</h5>
-                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"><span></span></div>
-                    <h5>Doctor 4</h5>
-                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
-                </div>
-                <div class="roadmap-item">
-                    <div class="roadmap-point"><span></span></div>
-                    <h5>Doctor 5</h5>
-                    <span>Diam dolor ipsum sit amet erat ipsum lorem sit</span>
-                </div>
+                @foreach ($doctors as $item)
+                    <div class="roadmap-item">
+                        <div class="roadmap-point"><span></span></div>
+                        <h5>{{ $item->full_name }}</h5>
+                        <span>{{ $item->description }}</span>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -191,73 +174,115 @@
         <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
-                    <h1 class="display-6 text-title">Contact Us</h1>
-                    <p class="text-main fs-5 mb-0">If You Have Any Question, Please Contact Us</p>
-                </div>
-                <div class="col-lg-6 text-lg-end">
-                    <a class="btn btn-primary py-3 px-4" href="">Say Hello</a>
+                    <h1 class="display-6 text-title">{{ $contactUs->name }}</h1>
+                    <p class="text-main fs-5 mb-0">{{ $contactUs->title }}</p>
                 </div>
             </div>
             <div class="row g-5">
                 <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <p class="mb-2">Our clinic:</p>
-                    <h4>Imam Saud bin Abdulaziz Street, Al-Morouj region, Riyadh, Saudi Arabia</h4>
+                    <p class="mb-2">{{ trans('views.site.contact.clinic') }}</p>
+                    <h4>{{ $info->address }}</h4>
                     <hr class="w-100">
-                    <p class="mb-2">Call us:</p>
-                    <h4>+012 345 6789</h4>
+                    <p class="mb-2">{{ trans('views.site.contact.callUs') }}</p>
+                    <h4>{{ $info->phone }}</h4>
                     <hr class="w-100">
-                    <p class="mb-2">Mail us:</p>
-                    <h4>info@example.com</h4>
+                    <p class="mb-2">{{ trans('views.site.contact.mailUs') }}</p>
+                    <h4>{{ $info->email }}</h4>
                     <hr class="w-100">
-                    <p class="mb-2">Follow us:</p>
+                    <p class="mb-2">{{ trans('views.site.footer.followUs') }}</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+                        @isset($info->instagram)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->instagram }}"><i
+                                    class="fab fa-instagram"></i></a>
+                        @endisset
+                        @isset($info->facebook)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->facebook }}"><i
+                                    class="fab fa-facebook-f"></i></a>
+                        @endisset
+
+                        @isset($info->youtube)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->youtube }}"><i
+                                    class="fab fa-youtube"></i></a>
+                        @endisset
+                        @isset($info->linkedin)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->linkedin }}"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        @endisset
+
+                        @isset($info->whatsapp)
+                            <a class="btn btn-square btn-primary rounded-circle me-2"
+                                href="https://wa.me/{{ $info->whatsapp }}"><i class="fab fa-whatsapp"></i></a>
+                        @endisset
+                        @isset($info->snapchat)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->snapchat }}"><i
+                                    class="fab fa-snapchat"></i></a>
+                        @endisset
+                        @isset($info->telegram)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->telegram }}"><i
+                                    class="fab fa-telegram"></i></a>
+                        @endisset
+                        @isset($info->twitter)
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->twitter }}"><i
+                                    class="fab fa-twitter"></i></a>
+                        @endisset
                     </div>
+
                 </div>
                 <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <p class="mb-4">If You Have Any Question, Please Contact Us, If You Have Any Question, Please Contact
-                        Us</p>
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                    <label for="name">Your Name</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                    <label for="email">Your Phone</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                    <label for="subject">Subject</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                    <label for="message">Message</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary py-3 px-4" type="submit">Send Message</button>
+                    <p class="mb-4">{{ $contactUs->description }}</p>
+
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <div class="form-floating custom-class">
+                                <input type="text" class="form-control" id="name"
+                                    placeholder="{{ trans('views.site.contact.form.name') }}">
+                                <label for="name"
+                                    dir="@if (app()->isLocale('ar')) rtl @endif">{{ trans('views.site.contact.form.name') }}</label>
                             </div>
                         </div>
-                    </form>
+                        {{-- <div class="col-md-6">
+                                <div class="form-floating custom-class">
+                                    <input type="email" class="form-control" id="phone"
+                                        placeholder="{{ trans('views.site.contact.form.phone') }}">
+                                    <label for="email"
+                                        dir="@if (app()->isLocale('ar')) rtl @endif">{{ trans('views.site.contact.form.phone') }}</label>
+                                </div>
+                            </div> --}}
+                        {{-- <div class="col-12">
+                                <div class="form-floating custom-class">
+                                    <input type="text" class="form-control" id="subject"
+                                        placeholder="{{ trans('views.site.contact.form.subject') }}">
+                                    <label for="subject"
+                                        dir="@if (app()->isLocale('ar')) rtl @endif">{{ trans('views.site.contact.form.subject') }}</label>
+                                </div>
+                            </div> --}}
+                        <div class="col-12">
+                            <div class="form-floating custom-class">
+                                <textarea class="form-control" placeholder="{{ trans('views.site.contact.form.message') }}" id="message"
+                                    style="height: 100px" dir="@if (app()->isLocale('ar')) rtl @endif"></textarea>
+                                <label for="message">{{ trans('views.site.contact.form.message') }}</label>
+                            </div>
+                        </div>
+                        <input type="hidden" id="physioPhone" value="{{ $info->whatsapp }}">
+                        <div class="col-12">
+                            <button class="btn btn-primary py-3 px-4"
+                                onclick="sendMessage();">{{ trans('views.site.contact.form.sendMessage') }}</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
     <!-- Contact End -->
+    <script>
+        function sendMessage() {
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('physioPhone').value;
+            let message = document.getElementById('message').value;
+            wholeMessage = `${message} - ( ${name} )`;
+            let url = "whatsapp://send?text=" + wholeMessage + "&phone=" + phone;
+            window.location.href = url;
+        }
+    </script>
 @endsection()

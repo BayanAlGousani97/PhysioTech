@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontControllers;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\BusinessHour;
+use App\Models\Doctor;
 use App\Models\Info;
 use App\Models\Section;
 use App\Models\Service;
@@ -27,8 +28,12 @@ class ViewsController extends Controller
         $vision = Section::where('slug', Str::slug("Our vision"))->first();
         $mission = Section::where('slug', Str::slug("Our Mission"))->first();
 
+        $doctorsSection = Section::where('slug', Str::slug("Doctors"))->first();
+        $doctors = Doctor::get();
+
+        $contactUs = Section::where('slug', Str::slug('Contact Us'))->first();
         return view('front.index', compact('info', 'infoT','services','businessSection','businessHours','banners','aboutUs',
-        'servicesSection','goal', 'vision', 'mission'));
+        'servicesSection','goal', 'vision', 'mission','doctorsSection','doctors','contactUs'));
     }
 
     public function service($id){
@@ -49,5 +54,14 @@ class ViewsController extends Controller
 
 
         return view('front.service', compact('info', 'infoT','services','businessSection','businessHours','service','servicesSection'));
+    }
+
+    function bookAppointment() {
+        $info = Info::first();
+        $infoT = $info->getTranslations();
+        $services = Service::get();
+        $businessSection = Section::where('slug',Str::slug('Business Hours'))->first();
+        $businessHours = BusinessHour::get();
+        return view('front.bookAppointment',compact('info', 'infoT','services','businessSection','businessHours'));
     }
 }

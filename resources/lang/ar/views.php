@@ -24,6 +24,14 @@ return [
     'days.thur'=>'الخميس',
     'days.fri'=>'الجمعة',
     'site.readMore' => 'اقرأ المزيد',
+    'site.contact.clinic'=>'عيادتنا:',
+    'site.contact.callUs'=>'اتصل بنا:',
+    'site.contact.mailUs'=>'راسلنا على:',
+    'site.contact.form.name'=>'اسمك',
+    'site.contact.form.phone'=>'رقم جوالك',
+    'site.contact.form.subject'=>'الموضوع',
+    'site.contact.form.message'=>'الرسالة',
+    'site.contact.form.sendMessage'=>'ارسل',
 
 
 

@@ -142,8 +142,8 @@
                     </li>
                 </ul>
                 <form class="d-flex @if (app()->isLocale('ar')) me-auto @endif">
-                    <button class="btn btn-primary"
-                        type="submit">{{ trans('views.site.nav.bookAppointment') }}</button>
+                    <a class="btn btn-primary"
+                        href="{{ route('bookAppointment') }}">{{ trans('views.site.nav.bookAppointment') }}</a>
                 </form>
             </div>
         </div>
@@ -252,7 +252,7 @@
                         @endisset
 
                         @isset($info->whatsapp)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->whatsapp }}"><i
+                            <a class="btn btn-square rounded-circle me-1" href="https://wa.me/{{ $info->whatsapp }}"><i
                                     class="fab fa-whatsapp"></i></a>
                         @endisset
                         @isset($info->snapchat)

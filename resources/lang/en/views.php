@@ -24,6 +24,15 @@ return [
     'days.thur'=>'Thur',
     'days.fri'=>'Fri',
     'site.readMore'=>'Read More',
+    'site.contact.clinic'=>'Our Clinic:',
+    'site.contact.callUs'=>'Call Us:',
+    'site.contact.mailUs'=>'Mail Us:',
+    'site.contact.form.name'=>'Your Name',
+    'site.contact.form.phone'=>'Your Phone',
+    'site.contact.form.subject'=>'Subject',
+    'site.contact.form.message'=>'Message',
+    'site.contact.form.sendMessage'=>'Send Message',
+
 
 
 

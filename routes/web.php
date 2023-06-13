@@ -21,6 +21,8 @@ use App\Http\Controllers\FrontControllers\ViewsController;
 // Guest
 Route::get('/', [ViewsController::class, 'index'])->name('front.index')->middleware('set.locale');
 Route::get('/services/{slug}', [ViewsController::class, 'service'])->name('front.service')->middleware('set.locale');
+Route::get('/book-appoitment', [ViewsController::class, 'bookAppointment'])->name('bookAppointment')->middleware('set.locale');
+
 
 
 // Dashboard

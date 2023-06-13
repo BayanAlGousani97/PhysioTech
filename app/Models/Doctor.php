@@ -23,5 +23,5 @@ class Doctor extends Model
         'status',
     ];
 
-    public $translatable = ['full_name', 'image', 'description'];
+    public $translatable = ['full_name', 'description'];
 }
