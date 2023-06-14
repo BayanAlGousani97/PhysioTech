@@ -242,7 +242,7 @@
                         </div>
                         {{-- <div class="col-md-6">
                                 <div class="form-floating custom-class">
-                                    <input type="email" class="form-control" id="phone"
+                                    <input type="tel" class="form-control" id="phone"
                                         placeholder="{{ trans('views.site.contact.form.phone') }}">
                                     <label for="email"
                                         dir="@if (app()->isLocale('ar')) rtl @endif">{{ trans('views.site.contact.form.phone') }}</label>

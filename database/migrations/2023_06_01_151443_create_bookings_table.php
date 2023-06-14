@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
-            $table->string('lase_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('phone')->nullable();
             $table->string('card_number')->nullable();
             $table->tinyinteger('gender')->nullable();
             $table->tinyinteger('age')->nullable();
+            $table->text('notes')->nullable();
             $table->tinyinteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();

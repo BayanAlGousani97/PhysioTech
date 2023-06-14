@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontControllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Booking;
 use App\Models\BusinessHour;
 use App\Models\Doctor;
 use App\Models\Info;
@@ -56,7 +57,7 @@ class ViewsController extends Controller
         return view('front.service', compact('info', 'infoT','services','businessSection','businessHours','service','servicesSection'));
     }
 
-    function bookAppointment() {
+    public function bookAppointment() {
         $info = Info::first();
         $infoT = $info->getTranslations();
         $services = Service::get();
@@ -64,4 +65,21 @@ class ViewsController extends Controller
         $businessHours = BusinessHour::get();
         return view('front.bookAppointment',compact('info', 'infoT','services','businessSection','businessHours'));
     }
+
+    function storeBookAppointment(Request $request)  {
+
+        // TODO: validations...
+
+        try {
+            $book= new Booking;
+            $book->fill($request->all());
+            $book->save();
+            return back();
+
+        } catch (\Throwable $th) {
+            abort(500);
+        }
+
+    }
+
 }

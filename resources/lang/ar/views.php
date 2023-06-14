@@ -32,8 +32,15 @@ return [
     'site.contact.form.subject'=>'الموضوع',
     'site.contact.form.message'=>'الرسالة',
     'site.contact.form.sendMessage'=>'ارسل',
-
-
+    'site.contact.form.first_name' => "الاسم الأول",
+    'site.contact.form.middle_name' => "اسم الأب",
+    'site.contact.form.last_name' => "الكنية",
+    'site.contact.form.age'=> 'العمر',
+    'site.contact.form.gender'=> 'الجنس',
+    'site.contact.form.gender.male'=> 'ذكر',
+    'site.contact.form.gender.female'=> 'أنثى',
+    'site.contact.form.card_number'=>'رقم البطاقة',
+    'site.contact.form.notes'=>'ملاحظاتك',
 
 ];
 

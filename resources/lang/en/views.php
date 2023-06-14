@@ -32,8 +32,15 @@ return [
     'site.contact.form.subject'=>'Subject',
     'site.contact.form.message'=>'Message',
     'site.contact.form.sendMessage'=>'Send Message',
-
-
+    'site.contact.form.first_name' => "First Name",
+    'site.contact.form.middle_name' => "Middle Name",
+    'site.contact.form.last_name' => "Last Name",
+    'site.contact.form.age'=> 'Age',
+    'site.contact.form.gender'=> 'Gender',
+    'site.contact.form.gender.male'=> 'Male',
+    'site.contact.form.gender.female'=> 'Femal',
+    'site.contact.form.card_number'=>'Card Number',
+    'site.contact.form.notes'=>'Notes',
 
 
 ];

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControllers\PagesController;
 use App\Http\Controllers\AdminControllers\BannersController;
+use App\Http\Controllers\AdminControllers\BookingsController;
 use App\Http\Controllers\AdminControllers\ServicesController;
 use App\Http\Controllers\FrontControllers\ViewsController;
 
@@ -22,8 +23,7 @@ use App\Http\Controllers\FrontControllers\ViewsController;
 Route::get('/', [ViewsController::class, 'index'])->name('front.index')->middleware('set.locale');
 Route::get('/services/{slug}', [ViewsController::class, 'service'])->name('front.service')->middleware('set.locale');
 Route::get('/book-appoitment', [ViewsController::class, 'bookAppointment'])->name('bookAppointment')->middleware('set.locale');
-
-
+Route::post('/book-appoitment', [ViewsController::class, 'storeBookAppointment'])->name('bookAppointment.store')->middleware('set.locale');
 
 // Dashboard
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
@@ -62,6 +62,9 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/services/{id}', [ServicesController::class, 'edit'])->name('services.edit');
     Route::put('/services/{id}', [ServicesController::class, 'update'])->name('services.update');
     Route::post('/services/destroy', [ServicesController::class, 'destroy'])->name('services.destroy');
+
+    Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.index');
+
 });
 
 Route::middleware('auth', )->group(function () {

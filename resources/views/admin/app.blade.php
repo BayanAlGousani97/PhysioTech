@@ -108,6 +108,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('bookings.index') }}">
+                    <i class="fas fa-fw fa-user-md"></i>
+                    <span>Bookings</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('contact.index') }}">
                     <i class="fas fa-fw fa-phone-alt"></i>
                     <span>Contact Info</span></a>

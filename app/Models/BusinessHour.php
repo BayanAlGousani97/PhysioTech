@@ -27,7 +27,6 @@ class BusinessHour extends Model
         'status',
     ];
 
-    // TODO : Accessor and mutatuor to days
 
     public static $status = [0 => 'close', 1 => 'open'];
     public static $days = [1=>'sat', 2=>'sun', 3=>'mon', 4=>'tue', 5=>'wed', 6=>'thur', 7=>'fri'];
