@@ -61,12 +61,20 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="custom-class">
-                                    <select class="form-select" name="gender" id="gender">
-                                        <option value="male">{{ trans('views.site.contact.form.gender.male') }}</option>
-                                        <option value="female">{{ trans('views.site.contact.form.gender.female') }}
-                                        </option>
-                                    </select>
+                                <label for="gender" class="form-label"
+                                    dir="@if (app()->isLocale('ar')) rtl @endif">{{ trans('views.site.contact.form.gender') }}</label>
+                                <br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="male"
+                                        value="male">
+                                    <label class="form-check-label"
+                                        for="male">{{ trans('views.site.contact.form.gender.male') }}</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="female"
+                                        value="female">
+                                    <label class="form-check-label"
+                                        for="female">{{ trans('views.site.contact.form.gender.female') }}</label>
                                 </div>
                             </div>
                             <div class="col-12">

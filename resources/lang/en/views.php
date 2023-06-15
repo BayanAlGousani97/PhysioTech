@@ -36,7 +36,7 @@ return [
     'site.contact.form.middle_name' => "Middle Name",
     'site.contact.form.last_name' => "Last Name",
     'site.contact.form.age'=> 'Age',
-    'site.contact.form.gender'=> 'Gender',
+    'site.contact.form.gender'=> 'Gender: ',
     'site.contact.form.gender.male'=> 'Male',
     'site.contact.form.gender.female'=> 'Femal',
     'site.contact.form.card_number'=>'Card Number',

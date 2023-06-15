@@ -36,7 +36,7 @@ return [
     'site.contact.form.middle_name' => "اسم الأب",
     'site.contact.form.last_name' => "الكنية",
     'site.contact.form.age'=> 'العمر',
-    'site.contact.form.gender'=> 'الجنس',
+    'site.contact.form.gender'=> 'الجنس: ',
     'site.contact.form.gender.male'=> 'ذكر',
     'site.contact.form.gender.female'=> 'أنثى',
     'site.contact.form.card_number'=>'رقم البطاقة',
