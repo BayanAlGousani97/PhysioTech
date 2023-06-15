@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControllers\PagesController;
 use App\Http\Controllers\AdminControllers\BannersController;
 use App\Http\Controllers\AdminControllers\BookingsController;
+use App\Http\Controllers\AdminControllers\DoctorsController;
 use App\Http\Controllers\AdminControllers\ServicesController;
 use App\Http\Controllers\FrontControllers\ViewsController;
 
@@ -62,6 +63,14 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::get('/services/{id}', [ServicesController::class, 'edit'])->name('services.edit');
     Route::put('/services/{id}', [ServicesController::class, 'update'])->name('services.update');
     Route::post('/services/destroy', [ServicesController::class, 'destroy'])->name('services.destroy');
+
+    Route::post('/sections/doctors', [DoctorsController::class, 'updateSectionDoctor'])->name('doctors.section.update');
+    Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors.index');
+    Route::get('/doctors/create', [DoctorsController::class, 'create'])->name('doctors.create');
+    Route::post('/doctors', [DoctorsController::class, 'store'])->name('doctors.store');
+    Route::get('/doctors/{id}', [DoctorsController::class, 'edit'])->name('doctors.edit');
+    Route::put('/doctors/{id}', [DoctorsController::class, 'update'])->name('doctors.update');
+    Route::post('/doctors/destroy', [DoctorsController::class, 'destroy'])->name('doctors.destroy');
 
     Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.index');
 

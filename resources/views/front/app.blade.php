@@ -4,12 +4,13 @@
 <head>
     <meta charset="utf-8">
     <title>Physio Tech</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta name="description" content="{{ trans('views.site.meta.description') }}">
+    <meta name="keywords" content="{{ trans('views.site.meta.keywords') }}">
+    <meta name="author" content="{{ trans('views.site.meta.author') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link href="img/hero-1.png" rel="icon">
+    <link href="img/logo.jpg" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com') }}">

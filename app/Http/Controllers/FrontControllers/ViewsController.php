@@ -74,7 +74,7 @@ class ViewsController extends Controller
             $book= new Booking;
             $book->fill($request->all());
             $book->save();
-            return back();
+            return redirect('/');
 
         } catch (\Throwable $th) {
             abort(500);

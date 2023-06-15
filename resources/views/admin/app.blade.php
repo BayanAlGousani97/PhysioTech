@@ -9,6 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- Favicon -->
+    <link href="img/logo.jpg" rel="icon">
+
     <title>PhysioTech - Dashboard</title>
 
     <!-- Custom fonts for this template-->
@@ -36,7 +39,8 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                href="{{ route('header.index') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -157,7 +161,10 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-
+                                <a class="dropdown-item" href="{{ route('front.index') }}" target="_blank">
+                                    <i class="fas fa-arrow-right fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Website
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
@@ -212,7 +219,10 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -41,6 +41,10 @@ return [
     'site.contact.form.gender.female'=> 'أنثى',
     'site.contact.form.card_number'=>'رقم البطاقة',
     'site.contact.form.notes'=>'ملاحظاتك',
+    'site.meta.description' => '',
+    'site.meta.keywords' =>'معالجة فيزيائية ، عناية منزلية ، فيزيوتيك',
+    'site.meta.author' => '',
+
 
 ];
 

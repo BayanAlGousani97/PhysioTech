@@ -41,7 +41,9 @@ return [
     'site.contact.form.gender.female'=> 'Femal',
     'site.contact.form.card_number'=>'Card Number',
     'site.contact.form.notes'=>'Notes',
-
+    'site.meta.description' =>'',
+    'site.meta.keywords' =>'physiotherapy, homecare, physiotech',
+    'site.meta.author' =>'',
 
 ];
 
