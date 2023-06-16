@@ -22,14 +22,16 @@ class BookingsController extends Controller
 
         try {
             if(!$id)
-                abort(404);
+                return back()->with('warning','This booking doesnt found');
+
             $booking = Booking::find($id);
             if(!$booking)
-                abort(404);
+                return back()->with('warning','This booking doesnt found');
+
             $booking->delete();
-            return back();
+            return back()->with('success','Deleted Successfully');
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
 
     }

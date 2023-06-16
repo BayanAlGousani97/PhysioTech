@@ -178,7 +178,9 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+                <div class="container">
+                    @include('flash-messages')
+                </div>
                 @yield('main')
 
             </div>

@@ -4,6 +4,8 @@
     <div class="container-fluid">
         <!-- Content Row -->
 
+
+        <!-- Create Post Form -->
         <form method="POST" action="{{ route('banners.update', $banner->id) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -23,23 +25,26 @@
                                     <div class="col-lg-12">
                                         <label class="col-form-label">Title</label>
                                         <input type="text" class="form-control" name="title_en"
-                                            value="{{ $bannerT['title']['en'] }}" required>
+                                            value="{{ $bannerT['title']['en'] }}">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label class="col-form-label">Short description</label>
-                                        <textarea type="text" class="form-control" name="description_en" rows="4" required>{{ $bannerT['description']['en'] }} </textarea>
+                                        <textarea type="text" class="form-control" name="description_en" rows="4">{{ $bannerT['description']['en'] }} </textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-
                                         <div class="mb-5">
-                                            <label for="Image" class="form-label">Image</label>
+                                            <label for="Image" class="form-label">Banner Image
+                                                <sub>1200px x 400px</sub>
+
+                                            </label>
                                             <input class="form-control" type="file" id="formFileEn"
-                                                onchange="previewEn()" name="image_en"
+                                                onchange="previewEn()" name="image_en" value="{{ $banner->image_en }}"
                                                 accept="image/jpeg, image/png, image/jpg" required>
+                                            <sub class="text-danger">No more 1 MG</sub>
                                         </div>
                                         <img id="frameEn" src="{{ $banner->image_en }}" class="img-fluid" />
                                     </div>
@@ -59,29 +64,33 @@
                         </a>
                         <div class="collapse show" id="collapseCardHeaderArabic">
                             <div class="card-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <label class="col-form-label">موجز مختصر</label>
-                                            <input type="text" class="form-control" name="title_ar"
-                                                value="{{ $bannerT['title']['ar'] }}" dir="rtl" required>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label class="col-form-label">العنوان </label>
+                                        <input type="text" class="form-control" name="title_ar"
+                                            value="{{ $bannerT['title']['ar'] }}" dir="rtl">
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <label class="col-form-label">وصف مفصل </label>
-                                            <textarea type="text" class="form-control" name="description_ar" rows="4" dir="rtl" required>{{ $bannerT['description']['ar'] }} </textarea>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label class="col-form-label">وصف مختصر </label>
+                                        <textarea type="text" class="form-control" name="description_ar" rows="4" dir="rtl">{{ $bannerT['description']['ar'] }} </textarea>
                                     </div>
-                                    <div class="row">
-                                        <div class="mb-5">
-                                            <label for="Image" class="form-label">الصورة</label>
-                                            <input class="form-control" type="file" id="formFileAr"
-                                                onchange="previewAr()" name="image_ar" dir="rtl"
-                                                accept="image/jpeg, image/png, image/jpg" required>
-                                        </div>
-                                        <img id="frameAr" src="{{ $banner->image_ar }}" class="img-fluid" />
+                                </div>
+                                <div class="row">
+                                    <div class="mb-5">
+                                        <label for="Image" class="form-label">
+                                            <sub>1200px x 400px</sub>
+                                            صورة الإعلان
+                                        </label>
+                                        <input class="form-control" type="file" id="formFileAr" onchange="previewAr()"
+                                            name="image_ar" dir="rtl" accept="image/jpeg, image/png, image/jpg"
+                                            required>
+
+                                        <sub class="text-danger">لا تتجاوز 1 ميغابايت</sub>
                                     </div>
+                                    <img id="frameAr" src="{{ $banner->image_ar }}" class="img-fluid" />
+                                </div>
                             </div>
                         </div>
                     </div>

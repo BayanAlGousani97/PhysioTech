@@ -93,19 +93,19 @@
                                                 <select class="form-select" name="business_day[]" required
                                                     aria-label="Default select example">
                                                     <option value="1"
-                                                        @if ($item->day == 'Sat') selected @endif>Sat</option>
+                                                        @if (in_array($item->day, ['Sat', 'السبت'])) selected @endif>Sat</option>
                                                     <option value="2"
-                                                        @if ($item->day == 'Sun') selected @endif>Sun</option>
+                                                        @if (in_array($item->day, ['Sun', 'الأحد'])) selected @endif>Sun</option>
                                                     <option value="3"
-                                                        @if ($item->day == 'Mon') selected @endif>Mon</option>
+                                                        @if (in_array($item->day, ['Mon', 'الاثنين'])) selected @endif>Mon</option>
                                                     <option value="4"
-                                                        @if ($item->day == 'Tue') selected @endif>Tue</option>
+                                                        @if (in_array($item->day, ['Tue', 'الثلاثاء'])) selected @endif>Tue</option>
                                                     <option value="5"
-                                                        @if ($item->day == 'Wed') selected @endif>Wed</option>
+                                                        @if (in_array($item->day, ['Wed', 'الأربعاء'])) selected @endif>Wed</option>
                                                     <option value="6"
-                                                        @if ($item->day == 'Thur') selected @endif>Thur</option>
+                                                        @if (in_array($item->day, ['Thur', 'الخميس'])) selected @endif>Thur</option>
                                                     <option value="7"
-                                                        @if ($item->day == 'Fri') selected @endif>Fri</option>
+                                                        @if (in_array($item->day, ['Fri', 'الجمعة'])) selected @endif>Fri</option>
                                                 </select>
                                             </td>
                                             <td>

@@ -33,7 +33,7 @@ class DoctorsController extends Controller
 
             return redirect()->route('doctors.index');
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -64,7 +64,7 @@ class DoctorsController extends Controller
 
             return redirect()->route('doctors.index');
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -118,7 +118,7 @@ class DoctorsController extends Controller
         try {
             $doctor = Doctor::find($id);
             if (!$doctor)
-                abort(404);
+                return back()->with('warning','This doctor doesnt found');
 
             $doctorT = $doctor->getTranslations();
 
@@ -128,7 +128,7 @@ class DoctorsController extends Controller
 
             return redirect()->route('doctors.index');
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -149,7 +149,7 @@ class DoctorsController extends Controller
             $doctor->delete();
             return response(['data' => '', 'message' => 'Deleted succssfully']);
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 }
