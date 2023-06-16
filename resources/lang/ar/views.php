@@ -44,7 +44,8 @@ return [
     'site.meta.description' => '',
     'site.meta.keywords' =>'معالجة فيزيائية ، عناية منزلية ، فيزيوتيك',
     'site.meta.author' => '',
-
+    'site.bookAppointment.success'=>'شكرا لكم، سيتم التواصل معكم من قبل قسم المواعيد في أسرع وقت ممكن',
+    'site.bookAppointment.error'=>'حدث خطأ أثناء حجز الموعد، يرجى المحاولة مرة أخرى لاحقاً',
 
 ];
 

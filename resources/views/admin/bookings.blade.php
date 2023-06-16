@@ -21,7 +21,7 @@
                                 <th>Card Number</th>
                                 <th>Notes</th>
                                 <th>Booking Date</th>
-                                <th> Action </th>
+                                {{-- <th> Action </th> --}}
                             </tr>
                         </thead>
                         <tfoot>
@@ -34,7 +34,7 @@
                                 <th>Card Number</th>
                                 <th>Notes</th>
                                 <th>Booking Date</th>
-                                <th> Action </th>
+                                {{-- <th> Action </th> --}}
                             </tr>
                         </tfoot>
                         <tbody>
@@ -48,11 +48,11 @@
                                     <td>{{ $item->card_number }}</td>
                                     <td>{{ $item->notes }}</td>
                                     <td>{{ $item->created_at }}</td>
-                                    <td class="text-center">
-                                        {{-- <a class="btn btn-warning btn-circle m-1" href=" "><i
+                                    {{-- <td class="text-center"> --}}
+                                    {{-- <a class="btn btn-warning btn-circle m-1" href=" "><i
                                                 class="fas fa-check"></i></a> --}}
-                                        <a class="btn btn-danger btn-circle m-1"><i class="fas fa-trash"></i></a>
-                                    </td>
+                                    {{-- <a class="btn btn-danger btn-circle m-1"><i class="fas fa-trash"></i></a> --}}
+                                    {{-- </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>

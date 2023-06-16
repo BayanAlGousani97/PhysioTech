@@ -119,7 +119,7 @@ class BannersController extends Controller
             $banner = Banner::find($id);
 
             if (!($banner))
-                return back()->with('error','This banner doesnt found');
+                return back()->with('warning','This banner doesnt found');
 
             $bannerT = $banner->getTranslations();
 

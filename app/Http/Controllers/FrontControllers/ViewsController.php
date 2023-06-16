@@ -74,10 +74,10 @@ class ViewsController extends Controller
             $book= new Booking;
             $book->fill($request->all());
             $book->save();
-            return redirect('/');
+            return back()->with('success',trans('views.site.bookAppointment.success'));
 
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error',trans('views.site.bookAppointment.error'));
         }
 
     }

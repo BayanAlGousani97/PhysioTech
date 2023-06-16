@@ -44,7 +44,8 @@ return [
     'site.meta.description' =>'',
     'site.meta.keywords' =>'physiotherapy, homecare, physiotech',
     'site.meta.author' =>'',
-
+    'site.bookAppointment.success'=>'Thank you, the appointment department will contact you as soon as possible',
+    'site.bookAppointment.error'=>'Something wrong, try later again please'
 ];
 
 ?>

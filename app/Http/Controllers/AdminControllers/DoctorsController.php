@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Section;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DoctorsController extends Controller
 {
@@ -25,13 +26,31 @@ class DoctorsController extends Controller
 
     function updateSectionDoctor(Request $request)
     {
-        // TODO Make validations ..
+        $validator = Validator::make($request->all(),
+            [
+                'title_en' => 'required|string|max:500',
+                'title_ar' => 'required|string|max:500',
+            ],
+            [
+                'title_en.required' => 'Title in English is required.',
+                'title_ar.required' => 'Title in Arabic is required.',
+                'title_en.string' => 'Title in English must be text.',
+                'title_ar.string' => 'Title in Arabic must be text.',
+                'title_en.max' => 'The title in English is 500 characters maximum',
+                'title_ar.max' => 'The title in Arabic is 500 characters maximum',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
+
         try {
             $doctor = Section::where('slug', 'doctors')->first();
             $doctor->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
             $doctor->save();
 
-            return redirect()->route('doctors.index');
+            return back()->with('success','Updated doctor section Successfully');
         } catch (\Throwable $th) {
             return back()->with('error','Something wrong, try later again please');
         }
@@ -55,14 +74,38 @@ class DoctorsController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: Validation ..
+        $validator = Validator::make($request->all(),
+            [
+                'full_name_en' => 'required|string|max:250',
+                'full_name_ar' => 'required|string|max:250',
+                'description_ar' => 'required|string',
+                'description_en' => 'required|string',
+            ],
+            [
+                'full_name_en.required' => 'Title in English is required.',
+                'full_name_ar.required' => 'Title in Arabic is required.',
+                'full_name_en.string' => 'Title in English must be text.',
+                'full_name_ar.string' => 'Title in Arabic must be text.',
+                'full_name_en.max' => 'The title in English is 500 characters maximum.',
+                'full_name_ar.max' => 'The title in Arabic is 500 characters maximum.',
+                'description_en.string' => 'Description in English must be text.',
+                'description_ar.string' => 'Description in Arabic must be text.',
+                'description_en.required' => 'Description in English is required.',
+                'description_ar.required' => 'Description in Arabic is required.',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
         try {
             $doctor = new Doctor;
             $doctor->full_name = ['en' => $request->full_name_en, 'ar' => $request->full_name_ar];
             $doctor->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
             $doctor->save();
 
-            return redirect()->route('doctors.index');
+            return back()->with('success','Add doctor section Successfully');
+
         } catch (\Throwable $th) {
             return back()->with('error','Something wrong, try later again please');
         }
@@ -102,19 +145,30 @@ class DoctorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-                // TODO Validations..
-        // $validator = Validator::make($request->all(), [
-        //     'title_en' => 'required|string',
-        //     'title_ar' => 'required|string',
-        //     'description_ar' => '',
-        //     'description_en' => '',
-        //     'image_ar' => '',
-        //     'image_en' => '',
-        // ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+        $validator = Validator::make($request->all(),
+            [
+                'full_name_en' => 'required|string|max:250',
+                'full_name_ar' => 'required|string|max:250',
+                'description_ar' => 'required|string',
+                'description_en' => 'required|string',
+            ],
+            [
+                'full_name_en.required' => 'Title in English is required.',
+                'full_name_ar.required' => 'Title in Arabic is required.',
+                'full_name_en.string' => 'Title in English must be text.',
+                'full_name_ar.string' => 'Title in Arabic must be text.',
+                'full_name_en.max' => 'The title in English is 500 characters maximum.',
+                'full_name_ar.max' => 'The title in Arabic is 500 characters maximum.',
+                'description_en.string' => 'Description in English must be text.',
+                'description_ar.string' => 'Description in Arabic must be text.',
+                'description_en.required' => 'Description in English is required.',
+                'description_ar.required' => 'Description in Arabic is required.',
+            ]
+        );
 
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
         try {
             $doctor = Doctor::find($id);
             if (!$doctor)
@@ -126,7 +180,7 @@ class DoctorsController extends Controller
             $doctor->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
             $doctor->save();
 
-            return redirect()->route('doctors.index');
+            return back()->with('success','Updated doctor info Successfully');
         } catch (\Throwable $th) {
             return back()->with('error','Something wrong, try later again please');
         }
@@ -144,7 +198,7 @@ class DoctorsController extends Controller
             $doctor = Doctor::find($request->id);
 
             if (!$doctor)
-                abort(404);
+                return back()->with('warning','This doctor doesnt found');
 
             $doctor->delete();
             return response(['data' => '', 'message' => 'Deleted succssfully']);

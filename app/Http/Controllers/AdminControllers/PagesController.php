@@ -28,14 +28,29 @@ class PagesController extends Controller
 
     public function updateHeader(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'title_ar' => 'required|string',
-            'title_en' => 'required|string',
-            'slogan_ar' => 'required|string',
-            'slogan_en' => 'required|string',
-        ]);
+        $validator = Validator::make($request->all(),
+            [
+                'title_en' => 'required|string|max:500',
+                'title_ar' => 'required|string|max:500',
+                'slogan_ar' => 'required|string',
+                'slogan_en' => 'required|string',
+            ],
+            [
+                'title_en.required' => 'Title in English is required.',
+                'title_ar.required' => 'Title in Arabic is required.',
+                'title_en.string' => 'Title in English must be text.',
+                'title_ar.string' => 'Title in Arabic must be text.',
+                'title_en.max' => 'The title in English is 500 characters maximum',
+                'title_ar.max' => 'The title in Arabic is 500 characters maximum',
+                'slogan_en.required' => 'Slogan in English is required.',
+                'slogan_ar.required' => 'Slogan in Arabic is required.',
+                'slogan_en.string' => 'Slogan in English must be text.',
+                'slogan_ar.string' => 'Slogan in Arabic must be text.',
+            ]
+        );
+
         if ($validator->fails()) {
-            // TODO return with failed
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
         }
 
         try {
@@ -52,9 +67,10 @@ class PagesController extends Controller
 
             $header->save();
 
-            return back(); // TODO return with success
+            return back()->with('success','Updated header info Successfully');
+
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -73,20 +89,38 @@ class PagesController extends Controller
 
     public function updateFooter(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'summary_ar' => 'required|string',
-            'summary_en' => 'required|string',
-            'businesshour_en' => '',
-            'businesshour_ar' => '',
-            'from' => 'array|required',
-            'to' => 'arraarray|requiredy|required',
-            'status' => '',
-            'business_day' => 'array|required'
+        $validator = Validator::make($request->all(),
+            [
+                'summary_ar' => 'required|string',
+                'summary_en' => 'required|string',
+                'businesshour_en' => 'required|string|max:500',
+                'businesshour_ar' => 'required|string|max:500',
 
-        ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+                'from' => 'array|required',
+                'from.*' => 'required|date_format:H:i',
+                'to' => 'array|required',
+                'to.*' => 'required|date_format:H:i',
+                'status' => 'array|required',
+                'status.*' => 'required|string',
+                'business_day' => 'array|required',
+                'business_day.*' => 'required'
+            ],
+            [
+                'businesshour_en.required' => 'Business hour section in English is required.',
+                'businesshour_ar.required' => 'Business hour section in Arabic is required.',
+                'businesshour_en.string' => 'Business hour section in English must be text.',
+                'businesshour_ar.string' => 'Business hour section in Arabic must be text.',
+                'businesshour_en.max' => 'The business hour section in English is 500 characters maximum',
+                'businesshour_ar.max' => 'The business hour section in Arabic is 500 characters maximum',
+                'summary_en.required' => 'Summary in English is required.',
+                'summary_ar.required' => 'Summary in Arabic is required.',
+                'summary_en.string' => 'Summary in English must be text.',
+                'summary_ar.string' => 'Summary in Arabic must be text.',
+            ]
+        );
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
             $footer = Info::first();
@@ -109,9 +143,9 @@ class PagesController extends Controller
                 $item->update(['to' => $request->to[$i], 'from' => $request->from[$i], 'status' => $request->status[$i]]);
             }
 
-            return back(); // TODO return with success
+            return back()->with('success','Updated footer info Successfully');
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -131,6 +165,9 @@ class PagesController extends Controller
             'phone_ar' => 'required|string',
         ]);
 
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
         try {
             $contact = Info::first();
 
@@ -154,9 +191,10 @@ class PagesController extends Controller
             $contact->save();
 
 
-            return back(); // TODO return with success
+            return back()->with('success','Updated cotantc info info Successfully');
+
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -178,9 +216,9 @@ class PagesController extends Controller
             'image_ar' => '',
             'image_en' => '',
         ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
             $aboutUs = Section::where('slug', 'about-us')->first();
@@ -196,9 +234,11 @@ class PagesController extends Controller
             $aboutUs->image = ['en' => $imageEn, 'ar' => $imageAr];
             $aboutUs->save();
 
-            return back(); // TODO return with success
+            return back()->with('success','Updated about us section info successfully');
+
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
+
         }
     }
 
@@ -220,21 +260,23 @@ class PagesController extends Controller
             'image_ar' => '',
             'image_en' => '',
         ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
-            $aboutUs = Section::where('slug', 'our-goal')->first();
-            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
-            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
-            // TODO : process upload images ..
-            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
-            $aboutUs->save();
+            $goal = Section::where('slug', 'our-goal')->first();
+            $goal->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $goal->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/sections/our-goal/", Str::slug($request->title_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/sections/our-goal/", Str::slug($request->title_ar . "-" . rand() . "-ar"));
+            $goal->image = ['en' => $imageEn, 'ar' => $imageAr];
+            $goal->save();
 
-            return back(); // TODO return with success
+            return back()->with('success','Updated goal section info Successfully');
+
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -256,21 +298,24 @@ class PagesController extends Controller
             'image_ar' => '',
             'image_en' => '',
         ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
-            $aboutUs = Section::where('slug', 'our-mission')->first();
-            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
-            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
-            // TODO : process upload images ..
-            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
-            $aboutUs->save();
+            $mission = Section::where('slug', 'our-mission')->first();
+            $mission->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $mission->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/sections/our-mission/", Str::slug($request->title_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/sections/our-mission/", Str::slug($request->title_ar . "-" . rand() . "-ar"));
+            $mission->image = ['en' => $imageEn, 'ar' => $imageAr];
+            $mission->save();
 
-            return back(); // TODO return with success
+            return back()->with('success','Updated our mission section info Successfully');
+
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -292,21 +337,22 @@ class PagesController extends Controller
             'image_ar' => '',
             'image_en' => '',
         ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
-            $aboutUs = Section::where('slug', 'our-vision')->first();
-            $aboutUs->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
-            $aboutUs->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
-            // TODO : process upload images ..
-            $aboutUs->image = ['en' => $request->image_en, 'ar' => $request->image_ar];
-            $aboutUs->save();
+            $vision = Section::where('slug', 'our-vision')->first();
+            $vision->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
+            $vision->description = ['en' => $request->description_en, 'ar' => $request->description_ar];
+            $imageEn = Helpers::uploadFileOnPublic($request->image_en, "img/sections/our-vision/", Str::slug($request->title_en . "-" . rand() . "-en"));
+            $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/sections/our-vision/", Str::slug($request->title_ar . "-" . rand() . "-ar"));
+            $vision->image = ['en' => $imageEn, 'ar' => $imageAr];
+            $vision->save();
+            return back()->with('success','Updated cotantc info info Successfully');
 
-            return back(); // TODO return with success
         } catch (\Throwable $th) {
-            // TODO return with failed
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 }

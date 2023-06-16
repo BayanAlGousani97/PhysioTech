@@ -32,7 +32,12 @@
 
 @if ($errors->any())
     <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
-        <strong>Please check the form below for errors</strong>
+        <strong>Failed</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif

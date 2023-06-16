@@ -8,6 +8,7 @@ use App\Models\Section;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Throwable;
 
@@ -35,9 +36,11 @@ class ServicesController extends Controller
             $service->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
             $service->save();
 
-            return redirect()->route('services.index');
+            return back()->with('success','Updated services section info Successfully');
+
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
+
         }
     }
     /**
@@ -70,9 +73,10 @@ class ServicesController extends Controller
             $service->image = ['en' => $imageEn, 'ar' => $imageAr];
             $service->save();
 
-            return redirect()->route('services.index');
+            return back()->with('success','Add a new service successfully!');
         } catch (Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
+
         }
     }
 
@@ -111,22 +115,22 @@ class ServicesController extends Controller
     public function update(Request $request, $id)
     {
         // TODO Validations..
-        // $validator = Validator::make($request->all(), [
-        //     'title_en' => 'required|string',
-        //     'title_ar' => 'required|string',
-        //     'description_ar' => '',
-        //     'description_en' => '',
-        //     'image_ar' => '',
-        //     'image_en' => '',
-        // ]);
-        // if ($validator->fails()) {
-        //     // TODO return with failed
-        // }
+        $validator = Validator::make($request->all(), [
+            'name_en' => 'required|string',
+            'name_ar' => 'required|string',
+            'description_ar' => '',
+            'description_en' => '',
+            'image_ar' => '',
+            'image_en' => '',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
             $service = Service::find($id);
             if (!$service)
-                abort(404);
+                return back()->with('warning','This service doesnt found');
 
             $serviceT = $service->getTranslations();
 
@@ -143,9 +147,10 @@ class ServicesController extends Controller
 
             $service->save();
 
-            return redirect()->route('services.index');
+            return back()->with('success','Updated service info Successfully');
+
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 
@@ -161,12 +166,12 @@ class ServicesController extends Controller
             $service = Service::find($request->id);
 
             if (!$service)
-                abort(404);
+                return back()->with('warning','This service doesnt found');
 
             $service->delete();
             return response(['data' => '', 'message' => 'Your service has been deleted succssfully']);
         } catch (\Throwable $th) {
-            abort(500);
+            return back()->with('error','Something wrong, try later again please');
         }
     }
 }

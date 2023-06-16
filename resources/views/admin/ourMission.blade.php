@@ -3,7 +3,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
         <!-- Content Row -->
-        <form method="POST" action="{{ route('mission.update') }}">
+        <form method="POST" action="{{ route('mission.update') }}" enctype="multipart/form-data">
             @csrf
             <div class="row mb-2">
                 <div class="col-lg-6">
@@ -26,15 +26,19 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label class="col-form-label">About us (description)</label>
+                                        <label class="col-form-label">Our mission (description)</label>
                                         <textarea type="text" class="form-control" name="description_en" rows="4" required>{{ $ourMissionTranslate['description']['en'] }} </textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <label class="col-form-label">Image</label>
-                                        <input type="file" class="form-control" name="image_en" value=""
-                                            accept="image/jpeg, image/png, image/jpg" required>
+                                        <div class="mb-5">
+                                            <label for="Image" class="form-label">Image</label>
+                                            <input class="form-control" type="file" id="formFileEn"
+                                                onchange="previewEn()" name="image_en"
+                                                accept="image/jpeg, image/png, image/jpg" required>
+                                        </div>
+                                        <img id="frameEn" src="{{ $ourMission->image_en }}" class="img-fluid" />
                                     </div>
                                 </div>
 
@@ -63,17 +67,18 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <label class="col-form-label">من نحن (وصف مفصل)</label>
+                                            <label class="col-form-label">رسالتنا (وصف مفصل)</label>
                                             <textarea type="text" class="form-control" name="description_ar" rows="4" dir="rtl" required>{{ $ourMissionTranslate['description']['ar'] }} </textarea>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-lg-12">
-                                            <label class="col-form-label">الصورة</label>
-                                            <input type="file" class="form-control uploadImage" name="image_ar"
-                                                dir="rtl" value="" accept="image/jpeg, image/png, image/jpg"
-                                                required>
+                                        <div class="mb-5">
+                                            <label for="Image" class="form-label">الصورة</label>
+                                            <input class="form-control" type="file" id="formFileAr"
+                                                onchange="previewAr()" name="image_ar" dir="rtl"
+                                                accept="image/jpeg, image/png, image/jpg" required>
                                         </div>
+                                        <img id="frameAr" src="{{ $ourMission->image_ar }}" class="img-fluid" />
                                     </div>
 
                             </div>
@@ -91,4 +96,23 @@
 
     </div>
     <!-- /.container-fluid -->
+    <script>
+        function previewAr() {
+            frameAr.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        function clearImageAr() {
+            document.getElementById('formFileAr').value = null;
+            frameAr.src = "";
+        }
+
+        function previewEn() {
+            frameEn.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        function clearImageEn() {
+            document.getElementById('formFileEn').value = null;
+            frameEn.src = "";
+        }
+    </script>
 @endsection

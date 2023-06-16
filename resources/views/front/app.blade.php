@@ -149,7 +149,9 @@
             </div>
         </div>
     </nav>
-
+    <div class="container">
+        @include('flash-messages')
+    </div>
     @yield('content')
 
     <!-- Google Map Start -->
