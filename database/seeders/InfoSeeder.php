@@ -18,27 +18,29 @@ class InfoSeeder extends Seeder
         $info = new Info;
 
         $title = ['en' => 'PhysioTech', 'ar' => 'فيزيوتيك'];
-        $slogan = ['en' => 'Home Care', 'ar' => 'عناية منزلية'];
+        $slogan = ['en' => 'Physiotherapy | Home Care', 'ar' => 'معالجة فيزيائية | عناية منزلية'];
         $summary = ['en' => 'Home Care Home Care Home Care Home Care Home Care Home Care', 'ar' => 'فيزيوتيك للمعالجة الفيزيائية والعناية المنزلية'];
-        $phone = ['en' => '0996312345678', 'ar' => '0996312345678'];
-        $address = ['en' => 'Saudi - test - test street', 'ar' => 'المملكة العربية السعودية - الرياض - شارع الاربعين'];
+        $address = ['en' => 'KSA - Riyadh - Al-Morouj District - Imam Saud bin Abdulaziz Street',
+        'ar' => 'المملكة العربية السعودية -الرياض - حي المروج - طريق الإمام سعود بن عبدالعزيز'];
 
         $info->setTranslations('title', $title);
         $info->setTranslations('slogan', $slogan);
         $info->setTranslations('summary', $summary);
-        $info->setTranslations('phone', $phone);
         $info->setTranslations('address', $address);
 
-        $info->email = 'doctor@physiotech.sa';
-        $info->whatsapp = '987654321';
-        $info->facebook = 'physiotech';
-        $info->instagram = '@physiotech';
-        $info->telegram = '@physiotech';
-        $info->youtube = '@physiotech';
-        $info->snapchat = '@physiotech';
-        $info->twitter = '@physiotech';
-        $info->map = '@physiotech';
-        $info->linkedin = '@physiotech';
+        $info->email = 'info@physiotech.sa';
+        $info->whatsapp = '966582700602';
+        $info->facebook = '';
+        $info->instagram = '';
+        $info->telegram = '';
+        $info->youtube = '';
+        $info->snapchat = '';
+        $info->phone1 =  '00966582700602';
+        $info->phone2 =   '00966505151977';
+        $info->tel = '0112443444';
+        $info->twitter = '';
+        $info->map = '';
+        $info->linkedin = '';
 
         $info->save();
     }

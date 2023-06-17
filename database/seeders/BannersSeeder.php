@@ -17,21 +17,24 @@ class BannersSeeder extends Seeder
     {
         $banners = [
             [
-                'title' => ['en' => 'First Banner', 'ar' => 'First Banner First Banner'],
+                'title' => ['en' => 'Home Care', 'ar' => 'عناية منزلية'],
                 'image' => ['en' => 'banner1-en.png', 'ar' => 'banner1-ar.png'],
-                'description' => ['en' => 'First Banner First Banner ', 'ar' => ' First Banner  First Banner  First Banner '],
+                'description' => [
+                    'en' => 'When you can\'t come to our clinck, we send medical team to your home.',
+                    'ar' => 'عندما لا تستطيع الحضور للمركز، نرسل فريق طبي لمنزلك'],
                 'status' => 1,
             ],
             [
-                'title' => ['en' => 'Second Banner', 'ar' => 'Second Banner Second Banner'],
+                'title' => ['en' => 'Book Appointment', 'ar' => 'احجز موعدك'],
                 'image' => ['en' => 'banner2-en.png', 'ar' => 'banner2-ar.png'],
-                'description' => ['en' => 'First Banner First Banner ', 'ar' => ' First Banner  First Banner  First Banner '],
+                'description' => ['en' => 'Book your appointment by one click, then a professional team will contact you.', 'ar' => 'احجز موعدك بضغطة زر، ويقوم فريق مختص بالتواصل معك.'],
                 'status' => 1,
             ],
             [
-                'title' => ['en' => 'First Banner', 'ar' => 'First Banner First Banner'],
+                'title' => ['en' => 'Physiotherapy clinic', 'ar' => 'عيادة خاصة بالعلاج الطبيعي'],
                 'image' => ['en' => 'banner3-en.png', 'ar' => 'banner3-ar.png'],
-                'description' => ['en' => 'First Banner First Banner ', 'ar' => ' First Banner  First Banner  First Banner '],
+                'description' => ['en' => 'Opening a professional clinic specializing in physiotherapy within the neurology building',
+                'ar' => 'افتتاح عيادة احترافية متخصصة بالعلاج الطبيعي ضمن مجمع طب الأعصاب'],
                 'status' => 1,
             ],
         ];

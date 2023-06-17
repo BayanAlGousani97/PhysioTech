@@ -181,10 +181,20 @@
             <div class="row g-5">
                 <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="mb-2">{{ trans('views.site.contact.clinic') }}</p>
-                    <h4>{{ $info->address }}</h4>
+                    <a href="{{ $info->map }}">
+                        <h4>{{ $info->address }}</h4>
+                    </a>
                     <hr class="w-100">
                     <p class="mb-2">{{ trans('views.site.contact.callUs') }}</p>
-                    <h4>{{ $info->phone }}</h4>
+                    <a href="tel:{{ $info->phone1 }}">
+                        <h4>{{ $info->phone1 }}</h4>
+                    </a>
+                    <a href="tel:{{ $info->phone2 }}">
+                        <h4>{{ $info->phone2 }}</h4>
+                    </a>
+                    <a href="tel:{{ $info->tel }}">
+                        <h4>{{ $info->tel }}</h4>
+                    </a>
                     <hr class="w-100">
                     <p class="mb-2">{{ trans('views.site.contact.mailUs') }}</p>
                     <a href="mailto:{{ $info->email }}">
@@ -194,38 +204,39 @@
                     <p class="mb-2">{{ trans('views.site.footer.followUs') }}</p>
                     <div class="d-flex pt-2">
                         @isset($info->instagram)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->instagram }}"><i
-                                    class="fab fa-instagram"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->instagram }}"
+                                target="_blank"><i class="fab fa-instagram"></i></a>
                         @endisset
                         @isset($info->facebook)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->facebook }}"><i
-                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->facebook }}"
+                                target="_blank"><i class="fab fa-facebook-f"></i></a>
                         @endisset
 
                         @isset($info->youtube)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->youtube }}"><i
-                                    class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->youtube }}"
+                                target="_blank"><i class="fab fa-youtube"></i></a>
                         @endisset
                         @isset($info->linkedin)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->linkedin }}"><i
-                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->linkedin }}"
+                                target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         @endisset
 
                         @isset($info->whatsapp)
                             <a class="btn btn-square btn-primary rounded-circle me-2"
-                                href="https://wa.me/{{ $info->whatsapp }}"><i class="fab fa-whatsapp"></i></a>
+                                href="https://wa.me/{{ $info->whatsapp }}"><i class="fab fa-whatsapp"
+                                    target="_blank"></i></a>
                         @endisset
                         @isset($info->snapchat)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->snapchat }}"><i
-                                    class="fab fa-snapchat"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->snapchat }}"
+                                target="_blank"><i class="fab fa-snapchat"></i></a>
                         @endisset
                         @isset($info->telegram)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->telegram }}"><i
-                                    class="fab fa-telegram"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->telegram }}"
+                                target="_blank"><i class="fab fa-telegram"></i></a>
                         @endisset
                         @isset($info->twitter)
-                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->twitter }}"><i
-                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->twitter }}"
+                                target="_blank"><i class="fab fa-twitter"></i></a>
                         @endisset
                     </div>
 

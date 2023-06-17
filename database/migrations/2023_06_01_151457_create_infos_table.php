@@ -18,7 +18,9 @@ return new class extends Migration
             $table->text('title')->nullable();
             $table->text('slogan')->nullable();
             $table->text('summary')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone1')->nullable();
+            $table->string('phone2')->nullable();
+            $table->string('tel')->nullable();
             $table->text('address')->nullable();
             $table->string('email')->nullable();
             $table->string('whatsapp')->nullable();

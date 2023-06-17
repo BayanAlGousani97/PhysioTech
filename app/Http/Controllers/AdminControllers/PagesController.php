@@ -177,8 +177,9 @@ class PagesController extends Controller
         $validator = Validator::make($request->all(), [
             'address_en' => 'required|string',
             'address_ar' => 'required|string',
-            'phone_en' => 'required|string|min:8|max:14',
-            'phone_ar' => 'required|string|min:8|max:14',
+            'phone1' => 'required|string|min:8|max:14',
+            'phone2' => 'required|string|min:8|max:14',
+            'tel' => 'required|string|min:8|max:14',
             'email' => 'required|string|email:rfc,dns',
             'whatsapp' => 'nullable|string',
             'facebook' => 'nullable|string',
@@ -193,14 +194,18 @@ class PagesController extends Controller
             'address_ar.required'=>'Address is reuired in Arabic.',
             'address_en.string'=>'Address must be text in English.',
             'address_ar.string'=>'Address must be text in Arabic.',
-            'phone_en.required'=>'Phone is required in English.',
-            'phone_ar.required'=>'Phone is required in Arabic.',
-            'phone_en.string'=>'Phone must be as 00966 58 123 1234 in Arabic.',
-            'phone_ar.string'=>'Phone must be as 00966 58 123 1234 in English.',
-            'phone_en.min'=>'Phone must be 8 numbers minimum in English.',
-            'phone_ar.min'=>'Phone must be 8 numbers minimum in Arabic.',
-            'phone_en.max'=>'Phone must be 14 numbers maximum in English.',
-            'phone_ar.max'=>'Phone must be 14 numbers maximum in Arabic.',
+            'phone1.required'=>'Phone is required in English.',
+            'phone2.required'=>'Phone is required in Arabic.',
+            'tel.required'=>'Phone is required in Arabic.',
+            'phone1.string'=>'Phone must be as 00966 58 123 1234 in Arabic.',
+            'phone2.string'=>'Phone must be as 00966 58 123 1234 in English.',
+            'tel.string'=>'Phone must be as 00966 58 123 1234 in English.',
+            'phone1.min'=>'Phone must be 8 numbers minimum in English.',
+            'phone2.min'=>'Phone must be 8 numbers minimum in Arabic.',
+            'tel.min'=>'Phone must be 8 numbers minimum in Arabic.',
+            'phone1.max'=>'Phone must be 14 numbers maximum in English.',
+            'phone2.max'=>'Phone must be 14 numbers maximum in Arabic.',
+            'tel.max'=>'Phone must be 14 numbers maximum in Arabic.',
             'email.required'=>'Your email is required.',
             'email.string'=>'Your email must be text, as admin@physio.sa',
             'email.email'=>'Email must be exist email.',
@@ -226,10 +231,11 @@ class PagesController extends Controller
 
             $addressTranslations = ['en' => $request->address_en, 'ar' => $request->address_ar];
             $contact->setTranslations('address', $addressTranslations);
-            $phoneTranslations = ['en' => $request->phone_en, 'ar' => $request->phone_ar];
-            $contact->setTranslations('phone', $phoneTranslations);
 
             $contact->email = $request->email;
+            $contact->phone1 = $request->phone1;
+            $contact->phone2 = $request->phone2;
+            $contact->tel = $request->tel;
             $contact->whatsapp = $request->whatsapp;
             $contact->facebook = $request->facebook;
             $contact->instagram = $request->instagram;

@@ -28,7 +28,7 @@ Route::post('/book-appoitment', [ViewsController::class, 'storeBookAppointment']
 
 // Dashboard
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [PagesController::class, 'home']);
+    Route::get('/', [PagesController::class, 'header']);
     Route::get('/header', [PagesController::class, 'header'])->name('header.index');
     Route::post('/header', [PagesController::class, 'updateHeader'])->name('header.update');
 

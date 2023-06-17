@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'site.title' => 'Phsio Tech',
+    'site.title' => 'Physio Tech',
     'site.nav.home'=>'Home',
     'site.nav.about'=>'About',
     'site.nav.services'=>'Services',
@@ -68,6 +68,14 @@ return [
     'gender.required' => 'Choose your gender please.',
     'age.required' => 'Your age is required to continue.',
     'age.integer' => 'Must enter your age to continue.',
+
+    'site.404.title' => 'Page Not Found',
+    'site.404.desc' => 'We\'re sorry, the page you have looked for does not exist in our website! Maybe go to our home page',
+    'site.404.action' => 'Go Back To Home',
+    'site.500.title' => 'Server Error',
+    'site.500.desc' => 'We\'re sorry, something went wrong, please try again and go to our homepage',
+    'site.500.action' => 'Go Back To Home',
+
 ];
 
 ?>

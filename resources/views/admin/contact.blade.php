@@ -26,15 +26,6 @@
                                             value="{{ $translateFields['address']['en'] }}" required>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <label class="col-form-label">
-                                            Phone
-                                        </label>
-                                        <input type="text" class="form-control" name="phone_en"
-                                            value="{{ $translateFields['phone']['en'] }}" required>
-                                    </div>
-                                </div>
 
                             </div>
                             <div class="card-footer">
@@ -59,13 +50,6 @@
                                         <label class="col-form-label">العنوان</label>
                                         <input type="text" class="form-control" name="address_ar"
                                             value="{{ $translateFields['address']['ar'] }}" dir="rtl" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <label class="col-form-label">رقم الهاتف</label>
-                                        <input type="text" class="form-control" name="phone_ar"
-                                            value="{{ $translateFields['phone']['en'] }}" dir="rtl" required>
                                     </div>
                                 </div>
                             </div>
@@ -118,6 +102,24 @@
                                         <input type="text" class="form-control" name="email"
                                             placeholder="ex: admin@physio.sa" value="{{ $info->email }}">
                                         <span class="text-danger"><sub>type your email </sub></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                                        <label class="col-form-label">Phone 1 *</label>
+                                        <input type="text" class="form-control" name="phone1" placeholder=""
+                                            value="{{ $info->phone1 }}" required>
+                                        <span class="text-danger"><sub>type your phone number 1 </sub></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                                        <label class="col-form-label">Phone 2 *</label>
+                                        <input type="text" class="form-control" name="phone2" placeholder=""
+                                            value="{{ $info->phone2 }}" required>
+                                        <span class="text-danger"><sub>type phone number 2 </sub></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+                                        <label class="col-form-label">Telephone *</label>
+                                        <input type="text" class="form-control" name="tel" placeholder=""
+                                            value="{{ $info->tel }}" required>
+                                        <span class="text-danger"><sub>type your telephone </sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Whatsapp *</label>

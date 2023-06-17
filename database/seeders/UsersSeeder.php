@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
                 'name' => 'Super Admin',
                 'email' => 'admin@physiotech.sa',
                 'email_verified_at' => \Carbon\Carbon::today()->format('Y-m-h'),
-                'password' => bcrypt('physiotech')
+                'password' => bcrypt('physiotech@#sa%1234')
             ]
         );
     }

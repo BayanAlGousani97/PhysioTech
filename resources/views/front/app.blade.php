@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Physio Tech</title>
+    <title>{{ trans('views.site.title') }}</title>
     <meta name="description" content="{{ trans('views.site.meta.description') }}">
     <meta name="keywords" content="{{ trans('views.site.meta.keywords') }}">
     <meta name="author" content="{{ trans('views.site.meta.author') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon -->
-    <link href="img/logo.jpg" rel="icon">
+    <link href="{{ asset('img/logo.jpg') }}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com') }}">
@@ -154,12 +154,15 @@
     </div>
     @yield('content')
 
-    <!-- Google Map Start -->
-    <div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s">
-        <iframe class="w-100 mb-n2" style="height: 450px;" src="{{ $info->map }}" frameborder="0" allowfullscreen=""
-            aria-hidden="false" tabindex="0"></iframe>
-    </div>
-    <!-- Google Map End -->
+    @if ($info->map)
+        <!-- Google Map Start -->
+        <div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s">
+            <iframe class="w-100 mb-n2" style="height: 450px;" src="{{ $info->map }}" frameborder="0"
+                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <!-- Google Map End -->
+    @endif
+
 
     <!-- Footer Start -->
     <div class="container-fluid bg-light footer wow fadeIn" data-wow-delay="0.1s">
@@ -199,11 +202,19 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">{{ trans('views.site.footer.getInTouch') }}</h5>
-                    <p><i class="fa fa-map-marker-alt me-3 ms-1"></i>{{ $info->address }}
+                    <p><i class="fa fa-map-marker-alt me-3 ms-1"></i>
+                        <a class="text-muted" href="{{ $info->map }}">{{ $info->address }}</a>
                     </p>
-                    <p><i class="fa fa-phone-alt me-3 ms-1"></i>{{ $info->phone }}
+                    <p><i class="fa fa-phone-alt me-3 ms-1"></i>
+                        <a class="text-muted" href="tel:{{ $info->phone1 }}">{{ $info->phone1 }}</a>
                     </p>
-                    <p><i class="fa fa-envelope me-3 ms-1"></i><a
+                    <p><i class="fa fa-phone-alt me-3 ms-1"></i>
+                        <a class="text-muted" href="tel:{{ $info->phone2 }}">{{ $info->phone2 }}</a>
+                    </p>
+                    <p><i class="fa fa-phone-alt me-3 ms-1"></i>
+                        <a class="text-muted" href="tel:{{ $info->tel }}">{{ $info->tel }}</a>
+                    </p>
+                    <p><i class="fa fa-envelope me-3 ms-2"></i><a class="text-muted"
                             href="mailto:{{ $info->email }}">{{ $info->email }}</a></p>
                 </div>
 
@@ -243,37 +254,37 @@
                     <h5 class="mb-4">{{ trans('views.site.footer.followUs') }}</h5>
                     <div class="d-flex">
                         @isset($info->instagram)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->instagram }}"><i
-                                    class="fab fa-instagram"></i></a>
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->instagram }}"
+                                target="_blank"><i class="fab fa-instagram"></i></a>
                         @endisset
                         @isset($info->facebook)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->facebook }}"><i
-                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->facebook }}"
+                                target="_blank"><i class="fab fa-facebook-f"></i></a>
                         @endisset
 
                         @isset($info->youtube)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->youtube }}"><i
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->youtube }}" target="_blank"><i
                                     class="fab fa-youtube"></i></a>
                         @endisset
                         @isset($info->linkedin)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->linkedin }}"><i
-                                    class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->linkedin }}"
+                                target="_blank"><i class="fab fa-linkedin-in"></i></a>
                         @endisset
 
                         @isset($info->whatsapp)
-                            <a class="btn btn-square rounded-circle me-1" href="https://wa.me/{{ $info->whatsapp }}"><i
-                                    class="fab fa-whatsapp"></i></a>
+                            <a class="btn btn-square rounded-circle me-1" href="https://wa.me/{{ $info->whatsapp }}"
+                                target="_blank"><i class="fab fa-whatsapp"></i></a>
                         @endisset
                         @isset($info->snapchat)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->snapchat }}"><i
-                                    class="fab fa-snapchat"></i></a>
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->snapchat }}"
+                                target="_blank"><i class="fab fa-snapchat"></i></a>
                         @endisset
                         @isset($info->telegram)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->telegram }}"><i
-                                    class="fab fa-telegram"></i></a>
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->telegram }}"
+                                target="_blank"><i class="fab fa-telegram"></i></a>
                         @endisset
                         @isset($info->twitter)
-                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->twitter }}"><i
+                            <a class="btn btn-square rounded-circle me-1" href="{{ $info->twitter }}" target="_blank"><i
                                     class="fab fa-twitter"></i></a>
                         @endisset
                     </div>
