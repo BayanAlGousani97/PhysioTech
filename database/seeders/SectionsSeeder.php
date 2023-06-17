@@ -33,10 +33,8 @@ class SectionsSeeder extends Seeder
             'ar' => 'فريق طبي مختص يقدم خدمات العلاج الطبيعي والرعاية المنزلية'];
         $aboutUs->image = ['en' => 'about-us-en.png', 'ar' => 'about-us-ar.png'];
         $aboutUs->description = [
-            'en' => 'Physiotech is based on the principle of providing the highest level of medical services in the field of physiotherapy and care
-home by a group of professional specialists licensed by the Saudi Ministry of Health.',
-            'ar' => 'فيزيوتك تقوم على مبدأ تقديم أعلى مستوى من الخدمات الطبية في مجال العالج الطبيعي والرعاية
-المنزلية من خالل نخبة من األخصائيين المحترفين والمرخصين من وزارة الصحة السعودية.',
+            'en' => 'Physiotec is based on the principle of providing the highest level of medical services in the field of physiotherapy and home care for the elderly, the disabled, people with special needs, and those who cannot come to the clinic for their own reasons, through a selection of doctors and professional specialists with experience, specialization, and licensed by the Ministry of Health in the Kingdom of Saudi Arabia. where they use the latest technologies and methods to improve the quality of life for patients, help them get rid of obstacles and pain, and provide medical tools and equipment to help and train them on them. Physiotec also seeks to provide medical consultations in all specialties to solve patients\' problems. ',
+            'ar' => 'فيزيوتك تقوم على مبدأ تقديم أعلى مستوى من الخدمات الطبية في مجال العلاج الطبيعي والرعاية المنزلية لكبار السن والمقعدين وذوي الاحتياجات الخاصة ومن لا يستطيعون الحضور إلى العيادة لأسبابهم الخاصة، وذلك من خلال نخبة من الأطباء و الأخصائيين المحترفين ذوي الخبرة والاختصاص والمرخصين من وزارة الصحة في المملكة العربية السعودية، حيث يستخدمون أحدث التقنيات والأساليب لتحسين جودة الحياة لدى المرضى، ومساعدتهم للتخلص من العقبات والآلام، وتأمين الأدوات والمعدات الطبي لإعانتهم وتدريبهم عليها، وأيضا تسعى فيزيوتيك لتقديم الاستشارات الطبية في جميع التخصصات لحل مشاكل المرضى. ',
         ];
         $aboutUs->save();
 

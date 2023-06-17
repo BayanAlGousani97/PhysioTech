@@ -157,8 +157,10 @@
     @if ($info->map)
         <!-- Google Map Start -->
         <div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s">
-            <iframe class="w-100 mb-n2" style="height: 450px;" src="{{ $info->map }}" frameborder="0"
-                allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe class="w-100 mb-n2" style="height: 450px;"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.3836488824377!2d46.57737532577458!3d24.74803184974925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee10acaa6a859%3A0x9ccf18da5a1d7861!2zSW1hbSBTYXVkIGJpbiBBYmR1bGF6aXosINin2YTYt9ix2YrZgSDYp9mE2KzYr9mK2K_YjCDYp9mE2K_Ysdi52YrYqSAxMzcxMtiMINin2YTYs9i52YjYr9mK2Kk!5e0!3m2!1sar!2s!4v1687025483454!5m2!1sar!2s"
+                frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
         </div>
         <!-- Google Map End -->
     @endif
@@ -169,8 +171,9 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6">
-                    <h1 class="text-second mb-4"><img class="img-fluid me-2" src="img/hero-1.png" alt=""
-                            style="width: 45px;">{{ trans('views.site.title') }}</h1>
+                    <h1 class="text-second mb-4"><img class="img-fluid me-2" src="{{ asset('/img/logo.png') }}"
+                            alt="{{ trans('views.site.title') }}" style="width: 45px;">{{ trans('views.site.title') }}
+                    </h1>
                     <span>{{ $infoT['summary'][str_replace('_', '-', app()->getLocale())] }}</span>
                 </div>
                 <div class="col-md-6">
@@ -203,7 +206,7 @@
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">{{ trans('views.site.footer.getInTouch') }}</h5>
                     <p><i class="fa fa-map-marker-alt me-3 ms-1"></i>
-                        <a class="text-muted" href="{{ $info->map }}">{{ $info->address }}</a>
+                        <a class="text-muted" href="{{ $info->map }}" target="_blank">{{ $info->address }}</a>
                     </p>
                     <p><i class="fa fa-phone-alt me-3 ms-1"></i>
                         <a class="text-muted" href="tel:{{ $info->phone1 }}">{{ $info->phone1 }}</a>
@@ -215,7 +218,7 @@
                         <a class="text-muted" href="tel:{{ $info->tel }}">{{ $info->tel }}</a>
                     </p>
                     <p><i class="fa fa-envelope me-3 ms-2"></i><a class="text-muted"
-                            href="mailto:{{ $info->email }}">{{ $info->email }}</a></p>
+                            href="mailto:{{ $info->email }}" target="_blank">{{ $info->email }}</a></p>
                 </div>
 
                 <div class="col-lg-3 col-md-6">

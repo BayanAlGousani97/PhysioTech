@@ -326,7 +326,7 @@ class PagesController extends Controller
         $ourGoal = Section::where('slug', 'our-goal')->first();
         $ourGoalTranslate = $ourGoal->getTranslations();
 
-        return view('admin. ourGoal', compact('ourGoal', 'ourGoalTranslate'));
+        return view('admin.ourGoal', compact('ourGoal', 'ourGoalTranslate'));
     }
 
     public function updateGoal(Request $request)

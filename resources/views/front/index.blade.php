@@ -181,7 +181,7 @@
             <div class="row g-5">
                 <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <p class="mb-2">{{ trans('views.site.contact.clinic') }}</p>
-                    <a href="{{ $info->map }}">
+                    <a href="{{ $info->map }}" target="_blank">
                         <h4>{{ $info->address }}</h4>
                     </a>
                     <hr class="w-100">
