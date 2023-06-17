@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid w-100"
+                    <img class="img-fluid w-100 animated pulse infinite" style="animation-duration: 3s;"
                         src="@if (app()->isLocale('ar')) {{ $service->image_ar }}@else{{ $service->image_en }} @endif"
                         alt="{{ $service->slug }}">
                 </div>

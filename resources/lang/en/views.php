@@ -45,7 +45,29 @@ return [
     'site.meta.keywords' =>'physiotherapy, homecare, physiotech',
     'site.meta.author' =>'',
     'site.bookAppointment.success'=>'Thank you, the appointment department will contact you as soon as possible',
-    'site.bookAppointment.error'=>'Something wrong, try later again please'
+    'site.bookAppointment.error'=>'Something wrong, try later again please',
+    'first_name.required' => 'Your first name is required.',
+    'first_name.string' => 'The first name must be text.',
+    'first_name.max' => 'Your first name is 50 characters maximum.',
+
+    'middle_name.required' => 'Your middle name is required.',
+    'middle_name.string' => 'The middle name must be text.',
+    'middle_name.max' => 'Your middle name is 50 characters maximum.',
+
+    'last_name.required' => 'Your last name is required.',
+    'last_name.string' => 'The last name must be text.',
+    'last_name.max' => 'Your last name is 50 characters maximum.',
+
+    'phone.required' => 'Your phone number is required to contact you.',
+    'phone.string' => 'Must enter your phone number to continue',
+    'phone.min' => 'The phone number must be between 8 and 14 number.',
+    'phone.max' => 'The phone number must be between 8 and 14 number.',
+
+    'card_number.required' => 'Your card number is required.',
+    'card_number.string' => 'Must enter real card number.',
+    'gender.required' => 'Choose your gender please.',
+    'age.required' => 'Your age is required to continue.',
+    'age.integer' => 'Must enter your age to continue.',
 ];
 
 ?>

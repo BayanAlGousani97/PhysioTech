@@ -30,7 +30,21 @@ class ServicesController extends Controller
 
     function updateSectionService(Request $request)
     {
-        // TODO Make validations ..
+        $validator = Validator::make($request->all(), [
+            'title_en' => 'required|string|max:250',
+            'title_ar' => 'required|string|max:250',
+        ],
+        [
+            'title_en.required' => 'Title in English is required.',
+            'title_en.string' => 'Title in English must be text.',
+            'title_en.max' => 'Title in English is 250 characters maximum.',
+            'title_ar.required' => 'Title in Arabic is required.',
+            'title_ar.string' => 'Title in Arabic must be text.',
+            'title_ar.max' => 'Title in Arabic is 250 characters maximum.',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
         try {
             $service = Section::where('slug', 'our-services')->first();
             $service->title = ['en' => $request->title_en, 'ar' => $request->title_ar];
@@ -61,7 +75,39 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: Validation ..
+        $validator = Validator::make($request->all(), [
+            'name_ar' => 'required|string|max:50',
+            'name_en' => 'required|string|max:50',
+            'short_description_ar' => 'required|string|max:100',
+            'short_description_en' => 'required|string|max:100',
+            'image_ar' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+            'image_en' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+        ],
+        [
+            'name_en.required' => 'Service name in English is required.',
+            'name_en.string' => 'Service name in English must be text.',
+            'name_en.max' => 'Service name in English is 50 characters maximum.',
+            'name_ar.required' => 'Service name in Arabic is required.',
+            'name_ar.string' => 'Service name in Arabic must be text.',
+            'name_ar.max' => 'Service name in Arabic is 50 characters maximum.',
+            'short_description_en.required' => 'Short description in English is required.',
+            'short_description_en.string' => 'Short description in English must be text.',
+            'short_description_en.max' => 'Short description in English is 100 characters maximum.',
+            'short_description_ar.required' => 'Short description in Arabic is required.',
+            'short_description_ar.string' => 'Short description in Arabic must be text.',
+            'short_description_ar.max' => 'Short description in Arabic is 100 characters maximum.',
+
+            'image_ar.required' => 'Image in Arabic is required.',
+            'image_ar.image' => 'In Arabic, must upload image png or jpg or jpeg.',
+            'image_ar.max' => 'Image in Arabic is 1 MB maximum.',
+
+            'image_en.required' => 'Image in English is required.',
+            'image_en.image' => 'In English, must upload image png or jpg or jpeg.',
+            'image_en.max' => 'Image in English is 1 MB maximum.',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors(['errors'=> $validator->errors()->all()]);
+        }
 
         try {
             $service = new Service;
@@ -76,7 +122,6 @@ class ServicesController extends Controller
             return back()->with('success','Add a new service successfully!');
         } catch (Throwable $th) {
             return back()->with('error','Something wrong, try later again please');
-
         }
     }
 
@@ -114,14 +159,35 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // TODO Validations..
         $validator = Validator::make($request->all(), [
-            'name_en' => 'required|string',
-            'name_ar' => 'required|string',
-            'description_ar' => '',
-            'description_en' => '',
-            'image_ar' => '',
-            'image_en' => '',
+            'name_ar' => 'required|string|max:50',
+            'name_en' => 'required|string|max:50',
+            'short_description_ar' => 'required|string|max:100',
+            'short_description_en' => 'required|string|max:100',
+            'image_ar' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+            'image_en' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+        ],
+        [
+            'name_en.required' => 'Service name in English is required.',
+            'name_en.string' => 'Service name in English must be text.',
+            'name_en.max' => 'Service name in English is 50 characters maximum.',
+            'name_ar.required' => 'Service name in Arabic is required.',
+            'name_ar.string' => 'Service name in Arabic must be text.',
+            'name_ar.max' => 'Service name in Arabic is 50 characters maximum.',
+            'short_description_en.required' => 'Short description in English is required.',
+            'short_description_en.string' => 'Short description in English must be text.',
+            'short_description_en.max' => 'Short description in English is 100 characters maximum.',
+            'short_description_ar.required' => 'Short description in Arabic is required.',
+            'short_description_ar.string' => 'Short description in Arabic must be text.',
+            'short_description_ar.max' => 'Short description in Arabic is 100 characters maximum.',
+
+            'image_ar.required' => 'Image in Arabic is required.',
+            'image_ar.image' => 'In Arabic, must upload image png or jpg or jpeg.',
+            'image_ar.max' => 'Image in Arabic is 1 MB maximum.',
+
+            'image_en.required' => 'Image in English is required.',
+            'image_en.image' => 'In English, must upload image png or jpg or jpeg.',
+            'image_en.max' => 'Image in English is 1 MB maximum.',
         ]);
         if ($validator->fails()) {
             return back()->withErrors(['errors'=> $validator->errors()->all()]);

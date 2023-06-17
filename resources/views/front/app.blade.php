@@ -203,13 +203,14 @@
                     </p>
                     <p><i class="fa fa-phone-alt me-3 ms-1"></i>{{ $info->phone }}
                     </p>
-                    <p><i class="fa fa-envelope me-3 ms-1"></i>{{ $info->email }}</p>
+                    <p><i class="fa fa-envelope me-3 ms-1"></i><a
+                            href="mailto:{{ $info->email }}">{{ $info->email }}</a></p>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">{{ trans('views.site.nav.services') }}</h5>
                     @foreach ($services as $item)
-                        <p> <a class="btn btn-link" href="">
+                        <p> <a class="btn btn-link" href="{{ route('front.service', $item->id) }}" target="_blank">
                                 <span class="p-1">{{ $item->name }}</span>
                             </a></p>
                     @endforeach
@@ -217,21 +218,26 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">{{ trans('views.site.foorer.quickLinks') }}</h5>
-                    <p><a class="btn btn-link" href="#about">
+                    <p><a class="btn btn-link" href="{{ route('front.index') }}#about">
                             <span class="p-1"> {{ trans('views.site.nav.about') }}</span>
                         </a></p>
-                    <p><a class="btn btn-link" href="#contant">
-                            <span class="p-1">{{ trans('views.site.nav.contact') }}
-                            </span></a>
-                    </p>
-                    <p><a class="btn btn-link" href="#services">
+                    <p><a class="btn btn-link" href="{{ route('front.index') }}#services">
                             <span class="p-1">{{ trans('views.site.nav.services') }}
                             </span></a>
                     </p>
-                    <p><a class="btn btn-link" href="#">
-                            <span class="p-1">{{ trans('views.site.pages.termsCondition') }}
+                    <p><a class="btn btn-link" href="{{ route('front.index') }}#doctors">
+                            <span class="p-1">{{ trans('views.site.nav.doctors') }}
                             </span></a>
                     </p>
+                    <p><a class="btn btn-link" href="{{ route('front.index') }}#contant">
+                            <span class="p-1">{{ trans('views.site.nav.contact') }}
+                            </span></a>
+                    </p>
+
+                    {{-- <p><a class="btn btn-link" href="#">
+                            <span class="p-1">{{ trans('views.site.pages.termsCondition') }}
+                            </span></a>
+                    </p> --}}
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">{{ trans('views.site.footer.followUs') }}</h5>
@@ -278,7 +284,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a href="#">{{ trans('views.site.title') }}</a>,
+                        &copy; <a href="{{ route('front.index') }}">{{ trans('views.site.title') }}</a>,
                         {{ trans('views.site.footer.allRight') }} | 2023
                     </div>
                 </div>

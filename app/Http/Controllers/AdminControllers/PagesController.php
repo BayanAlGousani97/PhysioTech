@@ -97,9 +97,7 @@ class PagesController extends Controller
                 'businesshour_ar' => 'required|string|max:500',
 
                 'from' => 'array|required',
-                'from.*' => 'required|date_format:H:i',
                 'to' => 'array|required',
-                'to.*' => 'required|date_format:H:i',
                 'status' => 'array|required',
                 'status.*' => 'required|string',
                 'business_day' => 'array|required',
@@ -116,6 +114,24 @@ class PagesController extends Controller
                 'summary_ar.required' => 'Summary in Arabic is required.',
                 'summary_en.string' => 'Summary in English must be text.',
                 'summary_ar.string' => 'Summary in Arabic must be text.',
+
+                'from.array' => 'From fields must be to all days',
+                'from.required' => 'To fields are required',
+                'to.array' => 'To fields must be to all days',
+                'to.required' => 'To fields are required',
+
+                'status.array' => 'Status fields must be to all days',
+                'status.required' => 'Status fields are required',
+
+                'status.*.string' => 'Status must be string',
+                'status.*.required' => 'Status are required',
+
+
+                'business_day.array' => 'Business days fields must be to all days',
+                'business_day.required' => 'Business days  fields are required',
+
+                'business_day.*.string' => 'Each business day must be string',
+                'business_day.*.required' => 'Each business day are required',
             ]
         );
         if ($validator->fails()) {
@@ -161,8 +177,42 @@ class PagesController extends Controller
         $validator = Validator::make($request->all(), [
             'address_en' => 'required|string',
             'address_ar' => 'required|string',
-            'phone_en' => 'required|string',
-            'phone_ar' => 'required|string',
+            'phone_en' => 'required|string|min:8|max:14',
+            'phone_ar' => 'required|string|min:8|max:14',
+            'email' => 'required|string|email:rfc,dns',
+            'whatsapp' => 'nullable|string',
+            'facebook' => 'nullable|string',
+            'instagram' => 'nullable|string',
+            'telegram' => 'nullable|string',
+            'youtube' => 'nullable|string',
+            'snapchat' => 'nullable|string',
+            'twitter' => 'nullable|string',
+            'map' => 'required|string',
+        ],[
+            'address_en.required'=> 'Address is required in English.',
+            'address_ar.required'=>'Address is reuired in Arabic.',
+            'address_en.string'=>'Address must be text in English.',
+            'address_ar.string'=>'Address must be text in Arabic.',
+            'phone_en.required'=>'Phone is required in English.',
+            'phone_ar.required'=>'Phone is required in Arabic.',
+            'phone_en.string'=>'Phone must be as 00966 58 123 1234 in Arabic.',
+            'phone_ar.string'=>'Phone must be as 00966 58 123 1234 in English.',
+            'phone_en.min'=>'Phone must be 8 numbers minimum in English.',
+            'phone_ar.min'=>'Phone must be 8 numbers minimum in Arabic.',
+            'phone_en.max'=>'Phone must be 14 numbers maximum in English.',
+            'phone_ar.max'=>'Phone must be 14 numbers maximum in Arabic.',
+            'email.required'=>'Your email is required.',
+            'email.string'=>'Your email must be text, as admin@physio.sa',
+            'email.email'=>'Email must be exist email.',
+            'whatsapp.string'=> 'Whatsapp must be exit whatspp account, as 966581231234 without + or 00.',
+            'facebook.string'=>'Facebook must be a link to your offical page.',
+            'instagram.string'=>'Instagram must be a link to your offical account.',
+            'telegram.string'=>'Telegram must be a link to your offical channle.',
+            'youtube.string'=>'Youtube must be a link to your offical channle.',
+            'snapchat.string'=>'Snapchat must be a link to your offical account.',
+            'twitter.string'=>'Twitter must be a link to your offical account.',
+            'map.string'=>'Map link must be a link to your location in google map',
+            'map.required'=>'Your google map is required',
         ]);
 
         if ($validator->fails()) {
@@ -191,7 +241,7 @@ class PagesController extends Controller
             $contact->save();
 
 
-            return back()->with('success','Updated cotantc info info Successfully');
+            return back()->with('success','Updated contact info and social media links Successfully');
 
         } catch (\Throwable $th) {
             return back()->with('error','Something wrong, try later again please');
@@ -209,12 +259,35 @@ class PagesController extends Controller
     public function updateAbout(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_en' => 'required|string',
-            'title_ar' => 'required|string',
-            'description_ar' => '',
-            'description_en' => '',
-            'image_ar' => '',
-            'image_en' => '',
+            'title_en' => 'required|string|max:250',
+            'title_ar' => 'required|string|max:250',
+            'description_ar' => 'required|string|min:500',
+            'description_en' => 'required|string|min:500',
+            'image_ar' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+            'image_en' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+        ],
+        [
+            'title_en.required' => 'Title in English is required.',
+            'title_en.string' => 'Title in English must be text.',
+            'title_en.max' => 'Title in English is 250 characters maximum.',
+            'title_ar.required' => 'Title in Arabic is required.',
+            'title_ar.string' => 'Title in Arabic must be text.',
+            'title_ar.max' => 'Title in Arabic is 250 characters maximum.',
+
+            'description_en.required' => 'Description in English is required.',
+            'description_en.string' => 'Description in English must be a long text.',
+            'description_en.min' => 'Description in English is 500 chars minimum.',
+            'description_ar.required' => 'Description in Arabic is required.',
+            'description_ar.string' => 'Description in Arabic must be a long text.',
+            'description_ar.min' => 'Description in Arabic is 500 chars minimum.',
+
+            'image_ar.required' => 'Image in Arabic is required.',
+            'image_ar.image' => 'In Arabic, must upload image png or jpg or jpeg.',
+            'image_ar.max' => 'Image in Arabic is 1 MB maximum.',
+
+            'image_en.required' => 'Image in English is required.',
+            'image_en.image' => 'In English, must upload image png or jpg or jpeg.',
+            'image_en.max' => 'Image in English is 1 MB maximum.',
         ]);
         if ($validator->fails()) {
             return back()->withErrors(['errors'=> $validator->errors()->all()]);
@@ -247,18 +320,41 @@ class PagesController extends Controller
         $ourGoal = Section::where('slug', 'our-goal')->first();
         $ourGoalTranslate = $ourGoal->getTranslations();
 
-        return view('admin.ourGoal', compact('ourGoal', 'ourGoalTranslate'));
+        return view('admin. ourGoal', compact('ourGoal', 'ourGoalTranslate'));
     }
 
     public function updateGoal(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_en' => 'required|string',
-            'title_ar' => 'required|string',
-            'description_ar' => '',
-            'description_en' => '',
-            'image_ar' => '',
-            'image_en' => '',
+            'title_en' => 'required|string|max:250',
+            'title_ar' => 'required|string|max:250',
+            'description_ar' => 'required|string|min:250',
+            'description_en' => 'required|string|min:250',
+            'image_ar' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+            'image_en' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+        ],
+        [
+            'title_en.required' => 'Title in English is required.',
+            'title_en.string' => 'Title in English must be text.',
+            'title_en.max' => 'Title in English is 250 characters maximum.',
+            'title_ar.required' => 'Title in Arabic is required.',
+            'title_ar.string' => 'Title in Arabic must be text.',
+            'title_ar.max' => 'Title in Arabic is 250 characters maximum.',
+
+            'description_en.required' => 'Description in English is required.',
+            'description_en.string' => 'Description in English must be a long text.',
+            'description_en.min' => 'Description in English is 250 chars minimum.',
+            'description_ar.required' => 'Description in Arabic is required.',
+            'description_ar.string' => 'Description in Arabic must be a long text.',
+            'description_ar.min' => 'Description in Arabic is 250 chars minimum.',
+
+            'image_ar.required' => 'Image in Arabic is required.',
+            'image_ar.image' => 'In Arabic, must upload image png or jpg or jpeg.',
+            'image_ar.max' => 'Image in Arabic is 1 MB maximum.',
+
+            'image_en.required' => 'Image in English is required.',
+            'image_en.image' => 'In English, must upload image png or jpg or jpeg.',
+            'image_en.max' => 'Image in English is 1 MB maximum.',
         ]);
         if ($validator->fails()) {
             return back()->withErrors(['errors'=> $validator->errors()->all()]);
@@ -291,12 +387,35 @@ class PagesController extends Controller
     public function updateMission(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_en' => 'required|string',
-            'title_ar' => 'required|string',
-            'description_ar' => '',
-            'description_en' => '',
-            'image_ar' => '',
-            'image_en' => '',
+            'title_en' => 'required|string|max:250',
+            'title_ar' => 'required|string|max:250',
+            'description_ar' => 'required|string|min:250',
+            'description_en' => 'required|string|min:250',
+            'image_ar' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+            'image_en' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+        ],
+        [
+            'title_en.required' => 'Title in English is required.',
+            'title_en.string' => 'Title in English must be text.',
+            'title_en.max' => 'Title in English is 250 characters maximum.',
+            'title_ar.required' => 'Title in Arabic is required.',
+            'title_ar.string' => 'Title in Arabic must be text.',
+            'title_ar.max' => 'Title in Arabic is 250 characters maximum.',
+
+            'description_en.required' => 'Description in English is required.',
+            'description_en.string' => 'Description in English must be a long text.',
+            'description_en.min' => 'Description in English is 250 chars minimum.',
+            'description_ar.required' => 'Description in Arabic is required.',
+            'description_ar.string' => 'Description in Arabic must be a long text.',
+            'description_ar.min' => 'Description in Arabic is 250 chars minimum.',
+
+            'image_ar.required' => 'Image in Arabic is required.',
+            'image_ar.image' => 'In Arabic, must upload image png or jpg or jpeg.',
+            'image_ar.max' => 'Image in Arabic is 1 MB maximum.',
+
+            'image_en.required' => 'Image in English is required.',
+            'image_en.image' => 'In English, must upload image png or jpg or jpeg.',
+            'image_en.max' => 'Image in English is 1 MB maximum.',
         ]);
 
         if ($validator->fails()) {
@@ -330,12 +449,35 @@ class PagesController extends Controller
     public function updateVision(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_en' => 'required|string',
-            'title_ar' => 'required|string',
-            'description_ar' => '',
-            'description_en' => '',
-            'image_ar' => '',
-            'image_en' => '',
+            'title_en' => 'required|string|max:250',
+            'title_ar' => 'required|string|max:250',
+            'description_ar' => 'required|string|min:250',
+            'description_en' => 'required|string|min:250',
+            'image_ar' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+            'image_en' => 'required|image:JPG,JPEG,PNG,WEBP,BMP,GIF|max:1024',
+        ],
+        [
+            'title_en.required' => 'Title in English is required.',
+            'title_en.string' => 'Title in English must be text.',
+            'title_en.max' => 'Title in English is 250 characters maximum.',
+            'title_ar.required' => 'Title in Arabic is required.',
+            'title_ar.string' => 'Title in Arabic must be text.',
+            'title_ar.max' => 'Title in Arabic is 250 characters maximum.',
+
+            'description_en.required' => 'Description in English is required.',
+            'description_en.string' => 'Description in English must be a long text.',
+            'description_en.min' => 'Description in English is 250 chars minimum.',
+            'description_ar.required' => 'Description in Arabic is required.',
+            'description_ar.string' => 'Description in Arabic must be a long text.',
+            'description_ar.min' => 'Description in Arabic is 250 chars minimum.',
+
+            'image_ar.required' => 'Image in Arabic is required.',
+            'image_ar.image' => 'In Arabic, must upload image png or jpg or jpeg.',
+            'image_ar.max' => 'Image in Arabic is 1 MB maximum.',
+
+            'image_en.required' => 'Image in English is required.',
+            'image_en.image' => 'In English, must upload image png or jpg or jpeg.',
+            'image_en.max' => 'Image in English is 1 MB maximum.',
         ]);
         if ($validator->fails()) {
             return back()->withErrors(['errors'=> $validator->errors()->all()]);
@@ -349,7 +491,7 @@ class PagesController extends Controller
             $imageAr = Helpers::uploadFileOnPublic($request->image_ar, "img/sections/our-vision/", Str::slug($request->title_ar . "-" . rand() . "-ar"));
             $vision->image = ['en' => $imageEn, 'ar' => $imageAr];
             $vision->save();
-            return back()->with('success','Updated cotantc info info Successfully');
+            return back()->with('success','Updated our vision section info Successfully');
 
         } catch (\Throwable $th) {
             return back()->with('error','Something wrong, try later again please');

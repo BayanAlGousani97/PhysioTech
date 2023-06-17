@@ -7,43 +7,53 @@
             @csrf
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header">
-                            Content in English
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label class="col-form-label">
-                                        Address
-                                    </label>
-                                    <input type="text" class="form-control" name="address_en"
-                                        value="{{ $translateFields['address']['en'] }}" required>
+                    <div class="card shadow">
+                        <!-- Card Header - Accordion -->
+                        <a href="#collapseCardCantactEn" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="collapseCardCantactEn">
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                Content in English
+                            </h6>
+                        </a>
+                        <div class="collapse show" id="collapseCardCantactEn">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label class="col-form-label">
+                                            Address
+                                        </label>
+                                        <input type="text" class="form-control" name="address_en"
+                                            value="{{ $translateFields['address']['en'] }}" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label class="col-form-label">
-                                        Phone
-                                    </label>
-                                    <input type="text" class="form-control" name="phone_en"
-                                        value="{{ $translateFields['phone']['en'] }}" required>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <label class="col-form-label">
+                                            Phone
+                                        </label>
+                                        <input type="text" class="form-control" name="phone_en"
+                                            value="{{ $translateFields['phone']['en'] }}" required>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                        <div class="card-footer">
-                            <span> Note: All inputs are required</span>
+                            </div>
+                            <div class="card-footer">
+                                <span> Note: All inputs are required</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card" style="text-align: right;">
-                        <div class="card-header">
-                            المحتوى في اللغة العربية
-                        </div>
-                        <div class="card-body">
-                            <form>
+                    <div class="card shadow" style="text-align: right;">
+                        <!-- Card Header - Accordion -->
+                        <a href="#collapseCardCantactAr" class="d-block card-header py-3" data-toggle="collapse"
+                            role="button" aria-expanded="true" aria-controls="collapseCardCantactAr">
+                            <h6 class="m-0 font-weight-bold text-primary">
+                                المحتوى في اللغة العربية
+                            </h6>
+                        </a>
+                        <div class="collapse show" id="collapseCardCantactAr">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label class="col-form-label">العنوان</label>
@@ -58,10 +68,12 @@
                                             value="{{ $translateFields['phone']['en'] }}" dir="rtl" required>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-footer">
+                                <span>ملاحظة: كل الحقول مطلوبة</span>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <span>ملاحظة: كل الحقول مطلوبة</span>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -102,63 +114,66 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                                        <label class="col-form-label">Email </label>
+                                        <label class="col-form-label">Email *</label>
                                         <input type="text" class="form-control" name="email"
-                                            value="{{ $info->email }}">
-                                        <span class="text-danger"><sub>please type phone number to contact your
-                                                using
-                                                whastapp with
-                                                country code </sub></span>
+                                            placeholder="ex: admin@physio.sa" value="{{ $info->email }}">
+                                        <span class="text-danger"><sub>type your email </sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
-                                        <label class="col-form-label">Whatsapp </label>
+                                        <label class="col-form-label">Whatsapp *</label>
                                         <input type="text" class="form-control" name="whatsapp"
-                                            placeholder="00963912345678" value="{{ $info->whatsapp }}">
-                                        <span class="text-danger"><sub>please type phone number to contact your
+                                            placeholder="ex: 966581231234" value="{{ $info->whatsapp }}">
+                                        <span class="text-danger"><sub>type phone number to contact your
                                                 using
                                                 whastapp with
-                                                country code </sub></span>
+                                                country code but without + or 00 </sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Facebook </label>
-                                        <input type="text" class="form-control" name="facebook"
-                                            value="{{ $info->facebook }}">
-                                        <span class="text-danger"><sub>please copy page link from facebook and
+                                        <input type="text" placeholder="ex: https://www.facebook.com/physiotechexample"
+                                            class="form-control" name="facebook" value="{{ $info->facebook }}">
+                                        <span class="text-danger"><sub>copy page link from facebook and
                                                 paste here</sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Instagram </label>
-                                        <input type="text" class="form-control" name="instagram"
-                                            value="{{ $info->instagram }}">
-                                        <span class="text-danger"><sub>please copy page link from instagram and
+                                        <input type="text"
+                                            placeholder="ex: https://www.instagram.com/physiotechexample/"
+                                            class="form-control" name="instagram" value="{{ $info->instagram }}">
+                                        <span class="text-danger"><sub>copy your account link from instagram and
                                                 paste here</sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Twitter </label>
-                                        <input type="text" class="form-control" name="twitter"
-                                            value="{{ $info->twitter }}">
-                                        <span class="text-danger"><sub>please copy page link from twitter and
+                                        <input type="text" placeholder="ex: https://twitter.com/physiotechexample"
+                                            class="form-control" name="twitter" value="{{ $info->twitter }}">
+                                        <span class="text-danger"><sub>copy your account link from twitter and
                                                 paste here</sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Telegram </label>
-                                        <input type="text" class="form-control" name="telegram"
-                                            value="{{ $info->telegram }}">
-                                        <span class="text-danger"><sub>please copy page link from telegram and
+                                        <input type="text" placeholder="ex: https://t.me/physiotechexample"
+                                            class="form-control" name="telegram" value="{{ $info->telegram }}">
+                                        <span class="text-danger"><sub>copy your channle or account link from
+                                                telegram
+                                                and
                                                 paste here</sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Youtube </label>
-                                        <input type="text" class="form-control" name="youtube"
-                                            value="{{ $info->youtube }}">
-                                        <span class="text-danger"><sub>please copy page link from youtube and
+                                        <input type="text" placeholder="ex: https://www.youtube.com/@PhysioTechExample"
+                                            class="form-control" name="youtube" value="{{ $info->youtube }}">
+                                        <span class="text-danger"><sub>copy your channle link from
+                                                youtube
+                                                and
                                                 paste here</sub></span>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
                                         <label class="col-form-label">Snapchat </label>
-                                        <input type="text" class="form-control" name="snapchat"
-                                            value="{{ $info->snapchat }}">
-                                        <span class="text-danger"><sub>please copy page link from snapchat and
+                                        <input type="text"
+                                            placeholder="ex: https://www.snapchat.com/add/physiotechexample"
+                                            class="form-control" name="snapchat" value="{{ $info->snapchat }}">
+                                        <span class="text-danger"><sub>copy your account link from snapchat and
                                                 paste here</sub></span>
                                     </div>
                                 </div>

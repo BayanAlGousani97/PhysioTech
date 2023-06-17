@@ -187,7 +187,9 @@
                     <h4>{{ $info->phone }}</h4>
                     <hr class="w-100">
                     <p class="mb-2">{{ trans('views.site.contact.mailUs') }}</p>
-                    <h4>{{ $info->email }}</h4>
+                    <a href="mailto:{{ $info->email }}">
+                        <h4>{{ $info->email }}</h4>
+                    </a>
                     <hr class="w-100">
                     <p class="mb-2">{{ trans('views.site.footer.followUs') }}</p>
                     <div class="d-flex pt-2">
