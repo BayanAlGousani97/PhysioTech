@@ -10,12 +10,12 @@
                 <form method="post" action="{{ route('doctors.section.update') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-6 mb-2">
+                        <div class="col-lg-6 col-md-6 mb-2">
                             <label for="titleEn" class="form-label">Content</label>
                             <input type="text" name="title_en" id="titleEn" value="{{ $sectionT['title']['en'] }}"
                                 class="form-control">
                         </div>
-                        <div class="col-6 mb-2" style="text-align: right;">
+                        <div class="col-lg-6 col-md-6 mb-2" style="text-align: right;">
                             <label for="titleAr" class="form-label">نبذة مختصرة </label>
                             <input type="text" name="title_ar" id="titleAr" value="{{ $sectionT['title']['ar'] }}"
                                 class="form-control" dir="rtl">

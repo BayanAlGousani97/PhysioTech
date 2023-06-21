@@ -158,9 +158,8 @@
         <!-- Google Map Start -->
         <div class="container-xxl px-0 wow fadeInUp" data-wow-delay="0.1s">
             <iframe class="w-100 mb-n2" style="height: 450px;"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.3836488824377!2d46.57737532577458!3d24.74803184974925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee10acaa6a859%3A0x9ccf18da5a1d7861!2zSW1hbSBTYXVkIGJpbiBBYmR1bGF6aXosINin2YTYt9ix2YrZgSDYp9mE2KzYr9mK2K_YjCDYp9mE2K_Ysdi52YrYqSAxMzcxMtiMINin2YTYs9i52YjYr9mK2Kk!5e0!3m2!1sar!2s!4v1687025483454!5m2!1sar!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3623.405907100042!2d46.66055189999999!3d24.7472683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee36e387f674d%3A0x78f2581aeb8b24fb!2z2YXYrNmF2Lkg2LfYqCDYp9mE2KPYudi12KfYqCDYp9mE2KrYrti12LXZiiDYry7Yudio2K_Yp9mE2LHYrdmF2YYg2KfZhNi32K3Yp9mGIE5ldXJvY2xpbmlj!5e0!3m2!1sar!2sus!4v1687341577628!5m2!1sar!2sus"
                 frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
         </div>
         <!-- Google Map End -->
     @endif
@@ -269,10 +268,10 @@
                             <a class="btn btn-square rounded-circle me-1" href="{{ $info->youtube }}" target="_blank"><i
                                     class="fab fa-youtube"></i></a>
                         @endisset
-                        @isset($info->linkedin)
+                        {{-- @isset($info->linkedin)
                             <a class="btn btn-square rounded-circle me-1" href="{{ $info->linkedin }}"
                                 target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        @endisset
+                        @endisset --}}
 
                         @isset($info->whatsapp)
                             <a class="btn btn-square rounded-circle me-1" href="https://wa.me/{{ $info->whatsapp }}"

@@ -188,7 +188,7 @@ class PagesController extends Controller
             'youtube' => 'nullable|string',
             'snapchat' => 'nullable|string',
             'twitter' => 'nullable|string',
-            'map' => 'required|string',
+            // 'map' => 'required|string',
         ],[
             'address_en.required'=> 'Address is required in English.',
             'address_ar.required'=>'Address is reuired in Arabic.',
@@ -216,8 +216,8 @@ class PagesController extends Controller
             'youtube.string'=>'Youtube must be a link to your offical channle.',
             'snapchat.string'=>'Snapchat must be a link to your offical account.',
             'twitter.string'=>'Twitter must be a link to your offical account.',
-            'map.string'=>'Map link must be a link to your location in google map',
-            'map.required'=>'Your google map is required',
+            // 'map.string'=>'Map link must be a link to your location in google map',
+            // 'map.required'=>'Your google map is required',
         ]);
 
         if ($validator->fails()) {
@@ -243,7 +243,7 @@ class PagesController extends Controller
             $contact->youtube = $request->youtube;
             $contact->snapchat = $request->snapchat;
             $contact->twitter = $request->twitter;
-            $contact->map = $request->map;
+            // $contact->map = $request->map;
             $contact->save();
 
 

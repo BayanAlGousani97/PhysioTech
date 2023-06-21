@@ -63,8 +63,8 @@ the pains and obstacles they face and improving their quality of life.',
         $mission->title = ['en' => 'Commitment to provide distinguished and integrated service', 'ar' => 'الالتزام بتقديم الخدمة المتميزة'];
         $mission->image = ['en' => 'our-mission-en.png', 'ar' => 'our-mission-ar.png'];
         $mission->description = [
-            'en' => 'Commitment to provide distinguished and integrated service to patients and to provide the latest technologies in the field of physical therapy and rehabilitation.',
-            'ar' => 'الالتزام بتقديم خدمة متميزة ومتكاملة للمرضى وتقديم أحدث التقنيات في مجال العلاج الطبيعي والتأهيل.',
+            'en' => 'Commitment to providing distinguished and integrated service to patients and providing the latest technologies in the field of physiotherapy and health rehabilitation, in addition to improving the quality of life of the elderly, people with special needs and patients, providing them with special care, prescribing appropriate techniques for them, and training them on them to adapt to a healthier lifestyle. ',
+            'ar' => 'الالتزام بتقديم خدمة متميزة ومتكاملة للمرضى وتقديم أحدث التقنيات في مجال العلاج الطبيعي والتأهيل الصحي، إضافة إلى تحسين جودة حياة كبار السن وذوي الاحتياجات الخاصة والمرضى، وتقديم الرعاية الخاصة لهم، وتوصيف لهم التقنيات المناسبة، وتدريبهم عليها ليتأقلموا مع أسلوب حياة أكثر صحة. ',
         ];
         $mission->save();
 
@@ -76,10 +76,10 @@ the pains and obstacles they face and improving their quality of life.',
         $vision->description = [
             'en' => 'To be a unique center of its kind in the Kingdom of Saudi Arabia that provides physiotherapy and rehabilitation services
 For patients with honesty and credibility, as the patient deserves, in cooperation with our health care partners
-Consultant doctors in all specialties to solve patients\' problems and alleviate their pain.',
+Consultant doctors in all specialties to solve patients\' problems and alleviate their pain. ',
             'ar' => 'أن نكون مركز فريد من نوعه في المملكة العربية السعودية يقدم خدمات العلاج الطبيعي والتأهيل
 للمرضى بكل أمانة ومصداقية وكما يستحق المريض بالتعاون مع شركائنا في الرعاية الصحية من
-الأطباء الاستشاريين في جميع التخصصات لحل مشاكل المرضى والتخفيف من اآلامهم.',
+الأطباء الاستشاريين في جميع التخصصات لحل مشاكل المرضى والتخفيف من اآلامهم. ',
         ];
         $vision->save();
 

@@ -30,17 +30,17 @@ class InfoSeeder extends Seeder
 
         $info->email = 'info@physiotech.sa';
         $info->whatsapp = '966582700602';
-        $info->facebook = '';
-        $info->instagram = '';
-        $info->telegram = '';
-        $info->youtube = '';
-        $info->snapchat = '';
+        // $info->facebook = '';
+        // $info->instagram = '';
+        // $info->telegram = '';
+        // $info->youtube = '';
+        // $info->snapchat = '';
         $info->phone1 =  '00966582700602';
         $info->phone2 =   '00966505151977';
         $info->tel = '0112443444';
-        $info->twitter = '';
-        $info->map = '';
-        $info->linkedin = '';
+        // $info->twitter = '';
+        $info->map = 'https://goo.gl/maps/V73Hy532597sonU39';
+        // $info->linkedin = '';
 
         $info->save();
     }

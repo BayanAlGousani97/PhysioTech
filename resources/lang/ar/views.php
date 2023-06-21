@@ -41,9 +41,9 @@ return [
     'site.contact.form.gender.female'=> 'أنثى',
     'site.contact.form.card_number'=>'رقم البطاقة',
     'site.contact.form.notes'=>'ملاحظاتك',
-    'site.meta.description' => '',
-    'site.meta.keywords' =>'معالجة فيزيائية ، عناية منزلية ، فيزيوتيك',
-    'site.meta.author' => '',
+    'site.meta.description' => 'فيزيوتيك هو الحل الأفضل للعلاج الطبيعي والرعاية المنزلية في المملكة العربية السعودية، تصفح موقعنا على الإنترنت وتعرف على خدماتنا وأطباؤنا واحجز موعدك الآن بنقرة زر ',
+    'site.meta.keywords' =>'العلاج الطبيعي  ، الرعاية منزلية ، فيزيوتيك',
+    'site.meta.author' => 'فريق فيزيوتيك',
     'site.bookAppointment.success'=>'شكرا لكم، سيتم التواصل معكم من قبل قسم المواعيد في أسرع وقت ممكن',
     'site.bookAppointment.error'=>'حدث خطأ أثناء حجز الموعد، يرجى المحاولة مرة أخرى لاحقاً',
 

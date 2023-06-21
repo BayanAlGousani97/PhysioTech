@@ -216,10 +216,10 @@
                             <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->youtube }}"
                                 target="_blank"><i class="fab fa-youtube"></i></a>
                         @endisset
-                        @isset($info->linkedin)
+                        {{-- @isset($info->linkedin)
                             <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $info->linkedin }}"
                                 target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        @endisset
+                        @endisset --}}
 
                         @isset($info->whatsapp)
                             <a class="btn btn-square btn-primary rounded-circle me-2"

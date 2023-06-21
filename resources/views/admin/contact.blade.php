@@ -22,8 +22,7 @@
                                         <label class="col-form-label">
                                             Address
                                         </label>
-                                        <input type="text" class="form-control" name="address_en"
-                                            value="{{ $translateFields['address']['en'] }}" required>
+                                        <textarea class="form-control" name="address_en" rows="2" required>{{ $translateFields['address']['en'] }}</textarea>
                                     </div>
                                 </div>
 
@@ -48,8 +47,8 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label class="col-form-label">العنوان</label>
-                                        <input type="text" class="form-control" name="address_ar"
-                                            value="{{ $translateFields['address']['ar'] }}" dir="rtl" required>
+                                        <textarea class="form-control" name="address_ar" dir="rtl" rows="2" required>{{ $translateFields['address']['ar'] }}</textarea>
+
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12 mt-4">
                     <div class="card shadow">
                         <!-- Card Header - Accordion -->
@@ -83,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-12 mt-4">
                     <div class="card shadow">
