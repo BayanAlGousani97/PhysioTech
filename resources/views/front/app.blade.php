@@ -13,11 +13,7 @@
     <link href="{{ asset('img/logo.jpg') }}" rel="icon">
 
     <!-- Google Web Fonts -->
-    <link rel="preconnect" href="{{ asset('https://fonts.googleapis.com') }}">
-    <link rel="preconnect" href="{{ asset('https://fonts.gstatic.com') }}" crossorigin>
-    <link
-        href="{{ asset('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700&display=swap') }}"
-        rel="stylesheet">
+    <link href="{{ asset('fonts/googleapis.css') }}" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css') }}"
@@ -313,8 +309,8 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"></script>
-    <script src="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
