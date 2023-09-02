@@ -42,60 +42,8 @@
     </div>
     <!-- Spinner End -->
 
-
-    <!-- Navbar Start -->
-    {{-- <div class="container-fluid bg-white sticky-top px-lg-5 py-2">
-        <div class="row align-items-center">
-            <div class="col-lg-6 text-md-start">
-                <h4 class="text-main">Physio Tech</h4>
-                <span class="small">Physiotherapy | Home care</span>
-            </div>
-            <div class="col-lg-6 text-lg-end">
-                <a href="index.html" class="text-dark">
-                    عربي
-                    <i class="fa fal fa-language"></i>
-                </a>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Navbar End -->
-
-    <!-- Header Start -->
-    {{-- <nav class="navbar navbar-expand-lg bg-light navbar-light px-3 px-lg-5">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white px-2 py-2">
         <div class="container-fluid">
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <i class="navbar-toggler-icon"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#services" class="nav-link ">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#doctors" class=" nav-link">Doctors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contact" class=" nav-link">Contact</a>
-                    </li>
-                </ul>
-                <span class="navbar-text py-1">
-                    <a href="" class="btn btn-sm btn-primary small">Book Appointment</a>
-                </span>
-            </div>
-        </div>
-
-    </nav> --}}
-    <!-- Header End -->
-
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-white px-2 py-2 ">
-        <div class="container-fluid">
-
             <a class="navbar-brand" href="{{ route('front.index') }}">
                 <h3 class="text-main">{{ trans('views.site.title') }}</h3>
                 <p class="text-muted small ">{{ $infoT['slogan'][str_replace('_', '-', app()->getLocale())] }}</p>
@@ -107,7 +55,7 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav ml-auto @if (app()->isLocale('en')) me-auto @endif my-2 my-lg-0 navbar-nav-scroll"
                     style="--bs-scroll-height: 100px;">
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link active" aria-current="page"
                             href="{{ route('front.index') }}">{{ trans('views.site.nav.home') }}</a>
                     </li>
@@ -148,7 +96,9 @@
     <div class="container">
         @include('flash-messages')
     </div>
+
     @yield('content')
+
 
     @if ($info->map)
         <!-- Google Map Start -->
@@ -319,6 +269,23 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <!-- Script to add active class to nav item when click on it -->
+    <script>
+        const navItems = document.querySelectorAll('.nav-link');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Remove active class from all items
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Add active class to clicked item
+                item.classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 

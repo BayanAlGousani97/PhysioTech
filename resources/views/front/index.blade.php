@@ -33,7 +33,7 @@
     <!-- Banners -->
 
     <!-- About Start -->
-    <div class="container-xxl my-5 py-5" id="about">
+    <div class="container-xxl section" id="about">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h1 class="display-6 text-title">{{ $aboutUs->name }}</h1>
@@ -57,8 +57,8 @@
     <!-- About End -->
 
     <!-- Service Start -->
-    <div class="container-xxl bg-light py-3 my-3" id="services">
-        <div class="container py-5">
+    <div class="container-xxl bg-light section" id="services">
+        <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h1 class="display-6 text-title">{{ $servicesSection->name }}</h1>
                 <p class="text-main fs-5 mb-5">{{ $servicesSection->title }}</p>
@@ -86,11 +86,11 @@
     <!-- Service End -->
 
     <!-- Mission Start -->
-    <div class="container-xxl my-4 py-4">
+    <div class="container-xxl my-3 py-3">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid"
+                    <img class="img-fluid "
                         src="@if (app()->isLocale('ar')) {{ $mission->image_ar }}@else{{ $mission->image_en }} @endif"
                         alt="{{ $mission->title }}">
                 </div>
@@ -107,7 +107,7 @@
     <!-- Mission End -->
 
     <!-- vision Start -->
-    <div class="container-xxl bg-light mt-4">
+    <div class="container-xxl bg-light my-3 py-3">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
@@ -128,7 +128,7 @@
     <!-- vision End -->
 
     <!-- Goul Start -->
-    <div class="container-xxl mt-4">
+    <div class="container-xxl my-3 py-3">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
@@ -149,7 +149,7 @@
     <!-- Goul End -->
 
     <!-- Doctors Start -->
-    <div class="container-xxl bg-light py-5" dir="ltr" id="doctors">
+    <div class="container-xxl bg-light section" dir="ltr" id="doctors">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <h1 class="display-6 text-title">{{ $doctorsSection->name }}</h1>
@@ -170,7 +170,7 @@
     <!-- Doctors End -->
 
     <!-- Contact Start -->
-    <div class="container-xxl py-5" id="contact">
+    <div class="container-xxl section" id="contact">
         <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
@@ -288,6 +288,7 @@
         </div>
     </div>
     <!-- Contact End -->
+
     <script>
         function sendMessage() {
             let name = document.getElementById('name').value;
